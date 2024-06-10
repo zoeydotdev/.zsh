@@ -18,6 +18,14 @@ Scripts I wrote to do things.
 1. Install prereqs
 1. Clone repository to `/opt/bin`.
 1. Add `source /opt/bin/.zshrc` to `~/.zshrc`.
+1. Replace and symlink:
+    ```
+    rm ~/.editorconfig; ln -s /opt/bin/.editorconfig ~/.editorconfig;
+    rm ~/.gitconfig/; ln -s /opt/bin/.gitconfig ~/.gitconfig;
+    rm ~/.gitignore_global; ln -s /opt/bin/.gitignore_global ~/.gitignore_global;
+    rm ~/.iex.exs; ln -s /opt/bin/.iex.exs ~/.iex.exs;
+    rm ~/.tool-versions; ln -s /opt/bin/.tool-versions ~/.tool-versions;
+    ```
 
 ## `scripts/`
 

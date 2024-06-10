@@ -1,0 +1,32 @@
+[user]
+    name = Ben Burke
+
+[includeIf "gitdir:~/repos-personal/"]
+    path = ~/repos-personal/.gitconfig
+
+[includeIf "gitdir:~/repos/"]
+    path = ~/repos/.gitconfig
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+
+[core]
+    excludesfile = /opt/bin/.gitignore_global
+
+[difftool "opendiff"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+[mergetool "opendiff"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+[diff]
+    tool = opendiff
+
+[push]
+    autoSetupRemote = true
+[rerere]
+    enabled = true
+[branch]
+    sort = -committerdate
