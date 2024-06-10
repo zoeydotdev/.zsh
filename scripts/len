@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+msg="$@"
+python -c "print(len(\"$msg\"))"

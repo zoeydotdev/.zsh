@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# gitj - search by ticket number can checkout a local or remote branch
+
+stash_work() {
+    [[ ! -z `git status -suall --renames` ]] \
+        && echo "STASHING WORK" \
+        && git stash -a -m "temporary stashing for gitj: $search"
+}
+
+search=$@
+[[ -z "$search" ]] \
+    && echo "Usage: gitj <jira_ticket_number>" \
+    && exit 1
+
+[[ "$search" =~ ^(master|main)$ ]] \
+    && echo "Master and main are not valid search terms." \
+    && exit 2
+
+gitup 2>&1
+
+remote=`git branch -ar | grep -ie "$search"`
+local_branch=`git branch -a | grep -ie "$search"`
+
+if [[ ! -z "${remote}${local_branch}" ]]; then
+    stash_work
+fi
+
+if [[ ! -z "$remote" ]]; then
+    echo "FOUND REMOTES: $remote"
+    git checkout ${remote#"origin/"}
+elif [[ ! -z "$local_branch" ]]; then
+    echo "FOUND LOCAL ONLY: $local_branch"
+    git checkout $local_branch
+elif [[ `len $search` -gt 9 ]]; then
+    # 4 char prefix + 5 numbers makes a ticket number
+    # checkout a local branch with a longer branch name
+    stash_work
+    git checkout -b $search
+else
+    echo "No result found."
+fi

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+range="$1"
+[[ -z $range ]] \
+    && echo "No line range supplied. Exiting" \
+    && exit 1
+
+file="$2"
+[[ -z $file ]] \
+    && echo "No file supplied. Exiting" \
+    && exit 2
+
+git log -L $range:$file

@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+import sys
+
+def sani(data):
+    return data.replace("\"{", "{").replace("}\"", "}").replace("\\u0026", "&").replace("\\", "")
+
+stdin = sys.stdin.read()
+print(sani(stdin))

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+args=$@
+[[ -z "$args" ]] && args="--indent 2"
+
+sani | /usr/bin/python3 -m json.tool $args

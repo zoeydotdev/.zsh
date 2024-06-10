@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# trim all branches, excluding the current branch and default branch
+
+delete_flag="$1"
+[[ -z "$delete_flag" ]] && delete_flag="-d"
+
+main_branch=$( default_branch )
+
+for branch in $( git branch | awk '{ print $1 }' ); do
+    if [[ ! -e "$branch" && "$branch" != "$main_branch" ]]; then
+        echo "deleting branch $branch"
+        git branch $delete_flag $branch
+    fi
+done

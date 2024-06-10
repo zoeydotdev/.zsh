@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+C=$( get_container )
+sudo tail -f /var/lib/docker/containers/$C/$C-json.log

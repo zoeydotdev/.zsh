@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# trim all branches, except for whatever this repository's default branch is
+
+# checkout default branch
+gitcd
+
+delete_flag="$1"
+[[ -z "$delete_flag" ]] && delete_flag="-d"
+
+# delete all branches except current branch
+for branch in $( git branch | awk '{ print $1 }' ); do
+    if [[ ! -e "$branch" ]] && [[ $branch != "$DBRANCH" ]]; then
+        echo "deleting branch $branch"
+        git branch $delete_flag $branch
+    fi
+done

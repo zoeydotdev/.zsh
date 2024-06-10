@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+from base64 import b64encode
+import os
+import re
+import sys
+
+if len(sys.argv) < 2:
+    print("File path missing.")
+    exit(1)
+
+def base64_encode(filepath):
+    [_, ext] = os.path.splitext(filepath)
+    if ext == ".json":
+        with open(filepath, 'r') as f:
+            message_str = re.sub(r"\s", "", f.read())
+            byte_message = b64encode(message_str.encode("utf-8"))
+            return byte_message.decode()
+    else:
+        print("File is not a .json file.")
+        exit(2)
+
+json_file = sys.argv[1]
+print(base64_encode(json_file))

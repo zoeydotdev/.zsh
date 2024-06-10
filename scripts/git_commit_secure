@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+changed_files=$( { gdiff --name-only ; gdiff --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
+changed_files=("${(f)changed_files}")
+
+for file in $changed_files; do
+    contents=$( grep -e 'mongodb://' $file )
+    if [[ ! -z "$contents" ]]; then
+        echo "NOT LETTING YOU COMMIT CREDENTIALS!"
+        exit 1
+    else
+        git commit $@
+    fi
+done

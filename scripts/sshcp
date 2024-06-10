@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+RM_HOST="$1"
+[[ -z $RM_HOST ]] \
+    && echo "No ssh host supplied. Exiting" \
+    && exit 1
+
+LOCAL_SCRIPTS_SRC=/opt/bin/ssh_scripts
+if [[ -d $LOCAL_SCRIPTS_SRC ]]; then
+    echo "Uploading executable scripts: $LOCAL_SCRIPTS_SRC"
+    scp -q $( what_can_execute $LOCAL_SCRIPTS_SRC ) "$RM_HOST:~/bin/" > /dev/null 2>&1
+
+    if [[ -f $LOCAL_SCRIPTS_SRC/.bashrc ]]; then
+        echo "Updating remote .bashrc"
+        scp -q $LOCAL_SCRIPTS_SRC/.bashrc "$RM_HOST:~/.bashrc" > /dev/null 2>&1
+    fi
+fi
+
+ssh $RM_HOST

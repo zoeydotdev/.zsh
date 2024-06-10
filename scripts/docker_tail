@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+CONTAINER="$1"
+[[ -z "$CONTAINER" ]] \
+    && echo "No container name/ID provided. Exiting." \
+    && exit 1
+
+RUNNING="false"
+echo "Waiting for container to start..."
+while [[ "$RUNNING" != "true" ]]; do
+    RUNNING=$( docker container inspect $CONTAINER | jq '.[0].State.Running' )
+    sleep 1
+done
+
+echo "Docker container ready! Logging in."
+clear
+clear
+docker exec -it $CONTAINER bash -c 'tail -f $S6_LOG_FILE'

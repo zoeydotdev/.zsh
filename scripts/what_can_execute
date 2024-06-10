@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Search for executable files using find command
+
+# Question: https://stackoverflow.com/q/4458120
+# Answer: https://stackoverflow.com/a/29039160
+
+# The POSIX-compliant equivalent of `-perm +111` from the accepted answer:
+# Match files that have ANY executable bit set.
+# Note the need to group the permission tests using parentheses.
+WHERE="$1"
+if [[ -z "$WHERE" ]]; then
+    WHERE=`pwd`
+fi
+
+find -L $WHERE -maxdepth 1 -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \)

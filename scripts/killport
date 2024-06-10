@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PORT="$1"
+
+[[ -z "$PORT" ]] \
+    && echo "No port provided. Exiting" \
+    && exit 1;
+
+for pid in `getpid $PORT`; do
+    killpid $pid
+done

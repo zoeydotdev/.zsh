@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo ls /var/lib/docker/containers

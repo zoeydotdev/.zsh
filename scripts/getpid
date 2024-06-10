@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+PORT="$1"
+
+[[ -z "$PORT" ]] \
+    && echo "No port provided. Exiting" \
+    && exit 1;
+
+[[ $PORT -gt 65535 ]] \
+    && echo "Invalid port number. Exiting" \
+    && exit 2;
+
+# -t option prints only the PID number
+# -u filters by user, ^ negation prints all PIDS not being used by root
+# -i filters by protocol and port, absence of filter prints all network connections
+lsof -t -u^root -i tcp:$PORT | uniq
