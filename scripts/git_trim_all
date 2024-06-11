@@ -15,3 +15,6 @@ for branch in $( git branch | awk '{ print $1 }' ); do
         git branch $delete_flag $branch
     fi
 done
+
+# trim remotes that have been deleted
+git fetch -apq
