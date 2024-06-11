@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 # determine the repository's default branch
+branch=$( git branch -a | grep -e '->' | awk '{print $3}' | cut -d '/' -f 2 | awk '{print $NF}' )
+if [[ -z "$branch" ]]; then
+    branch=$( git branch -a | grep -e '*' | awk '{print $2}' )
+fi
 
-branch=$( git branch -a | grep -e '->' | awk '{print $3}' )
-echo ${branch#origin/}
+echo $branch
