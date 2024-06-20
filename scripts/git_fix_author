@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+FROM_EMAIL="$1"
+[[ "$FROM_EMAIL" == "-h" ]] \
+    && echo "Description: Edits all commit authorships from FROM_EMAIL to TO_EMAIL" \
+    && echo "Usage: git_fix_author <FROM_EMAIL> <TO_EMAIL>" \
+    && exit 0;
+
+[[ -z "$FROM_EMAIL" ]] \
+    && echo "No FROM_EMAIL provided. Exiting" \
+    && exit 1;
+
+TO_EMAIL="$2"
+[[ -z "$TO_EMAIL" ]] \
+    && echo "No TO_EMAIL provided. Exiting" \
+    && exit 2;
+
+NAME=$( git config --global user.name )
+
+git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "'"${FROM_EMAIL}"'" ]; then
+    export GIT_AUTHOR_EMAIL="'"${TO_EMAIL}"'";
+    export GIT_AUTHOR_NAME="'"${NAME}"'";
+    export GIT_COMMITTER_EMAIL="'"${TO_EMAIL}"'";
+    export GIT_COMMITTER_NAME="'"${NAME}"'"; fi' -- --all
