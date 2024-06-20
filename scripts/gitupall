@@ -13,7 +13,7 @@ for dir in `ls -l | grep ^d | awk '{print $9}'`; do
         continue
     fi
     echo "[INFO] Repository: $dir" && cd $dir
-    gitup || echo "[WARN] Failed to update repository: $dir"
+    gitup &
     goto_githubs
 done
 
@@ -25,7 +25,7 @@ for dir in `ls -l | grep ^d | awk '{print $9}'`; do
         continue
     fi
     echo && echo "[INFO] Repository: $dir" && cd $dir
-    gitup || echo "[WARN] Failed to update repository: $dir"
+    gitup &
     goto_gitlabs
 done
 
