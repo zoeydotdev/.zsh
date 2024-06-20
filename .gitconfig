@@ -4,6 +4,12 @@
 [includeIf "gitdir:~/repos-personal/"]
     path = ~/repos-personal/.gitconfig
 
+[includeIf "gitdir:~/.config/"]
+    path = ~/repos-personal/.gitconfig
+
+[includeIf "gitdir:/opt/bin/"]
+    path = ~/repos-personal/.gitconfig
+
 [includeIf "gitdir:~/repos/"]
     path = ~/repos/.gitconfig
 
