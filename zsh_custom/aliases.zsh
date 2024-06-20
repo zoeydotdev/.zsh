@@ -29,7 +29,7 @@ alias gcssm='git_commit_secure --gpg-sign --signoff --message'
 
 ## Other Git aliases
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git_commit_secure --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
-alias gstall='git stash .'
+alias gstall='git stash -a'
 
 # PostgreSQL aliases
 alias pgup='pg_ctl -D /opt/homebrew/var/postgresql@14 start > /dev/null'
