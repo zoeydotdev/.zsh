@@ -3,7 +3,7 @@
 # trim all branches, except for whatever this repository's default branch is
 
 # checkout default branch
-gcm
+gitcd
 main_branch=$( default_branch )
 
 delete_flag="$1"

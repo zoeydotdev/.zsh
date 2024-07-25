@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# checkout whatever this repository's default branch is
+
+branch=$( default_branch )
+[[ ! -z "$branch" ]] && git checkout $branch
