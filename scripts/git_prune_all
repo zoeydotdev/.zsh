@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+goto_githubs() { cd ~/repos/github; }
+goto_gitlabs() { cd ~/repos/gitlab; }
+
+curdir=`pwd`
+
+# update all repos with a .git/ folder inside ~/repos/github
+goto_githubs
+for dir in `ls -l | grep ^d | awk '{print $9}'`; do
+    # only cd and get git updates if folder is a git repository
+    if [[ ! -d $dir/.git ]]; then
+        continue
+    fi
+    echo "[INFO] Repository: $dir" && cd $dir
+    git prune --progress &
+    goto_githubs
+done
+
+# update all repos with a .git/ folder inside repos/gitlab
+goto_gitlabs
+for dir in `ls -l | grep ^d | awk '{print $9}'`; do
+    # only cd and get git updates if folder is a git repository
+    if [[ ! -d $dir/.git ]]; then
+        continue
+    fi
+    echo && echo "[INFO] Repository: $dir" && cd $dir
+    git prune --progress &
+    goto_gitlabs
+done
+
+cd $curdir
