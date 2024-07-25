@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-changed_files=$( { gdiff --name-only ; gdiff --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
+changed_files=$( { gd --name-only ; gd --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
 changed_files=("${(f)changed_files}")
 
 for file in $changed_files; do

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 echo "linting staged files"
-for f in `git diff --name-only --staged | egrep '\.py$'`; do
+for f in `gd --name-only --staged | egrep '\.py$'`; do
     black $f
 done
 
 echo "linting changed files"
-for f in `git diff --name-only | egrep '\.py$'`; do
+for f in `gd --name-only | egrep '\.py$'`; do
     black $f
 done

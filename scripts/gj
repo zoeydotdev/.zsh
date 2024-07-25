@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 
-# gitj - search by ticket number can checkout a local or remote branch
+# gj - search by ticket number can checkout a local or remote branch
 
 stash_work() {
     [[ ! -z `git status -suall --renames` ]] \
         && echo "STASHING WORK" \
-        && git stash -a -m "temporary stashing for gitj: $search"
+        && git stash -a -m "temporary stashing for gj: $search"
 }
 
 search=$@
 [[ -z "$search" ]] \
-    && echo "Usage: gitj <jira_ticket_number>" \
+    && echo "Usage: gj <jira_ticket_number>" \
     && exit 1
 
 [[ "$search" =~ ^(master|main)$ ]] \
     && echo "Master and main are not valid search terms." \
     && exit 2
 
-gitup 2>&1
+git_up 2>&1
 
 remote=`git branch -ar | grep -ie "$search"`
 local_branch=`git branch -a | grep -ie "$search"`
