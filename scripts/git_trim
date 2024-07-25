@@ -6,9 +6,10 @@ delete_flag="$1"
 [[ -z "$delete_flag" ]] && delete_flag="-d"
 
 main_branch=$( default_branch )
+curr_branch=$( git_current_branch )
 
 for branch in $( git branch | awk '{ print $1 }' ); do
-    if [[ ! -e "$branch" && "$branch" != "$main_branch" ]]; then
+    if [[ "$branch" != "$curr_branch" && "$branch" != "$main_branch" ]]; then
         echo "deleting branch $branch"
         git branch $delete_flag $branch
     fi
