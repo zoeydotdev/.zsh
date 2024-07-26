@@ -44,7 +44,7 @@ Contents of `ssh_scripts/` are not sourced/accessible in `PATH` on the client - 
 
 ## `priv/`
 
-### Exposed to `PATH`? - NO
+### Exposed to `PATH`? - YES
 ### Git tracked? - NO
 
 Place scripts that shouldn't leak to Git in `priv/`.
