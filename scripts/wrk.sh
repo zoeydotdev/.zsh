@@ -106,7 +106,9 @@ EOF
 else
     TODAY=$( date -u "+%Y-%m-%d %T %Z" )
     read -r -d '' CMD << EOF
-    echo "## Test ran on ${TODAY}" >> ${LOGFILE} && echo >> ${LOGFILE} \
+       echo >> ${LOGFILE} \
+    && echo "## Test ran on ${TODAY}" >> ${LOGFILE} \
+    && echo >> ${LOGFILE} \
     && echo '\`\`\`' >> ${LOGFILE} \
     && wrk -s ${wrk_script} -t${NUM_THREADS} -c${NUM_CONNECTIONS} --latency -d${DURATION} \
         -H 'Authorization: Bearer ${AUTH_TOKEN}' \
