@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[[ ! -d .git ]] && echo "Not a git repository" && exit 1
+
+len $(commitmsg | head -n 1)
