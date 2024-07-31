@@ -26,6 +26,8 @@ alias gcmsg='git_commit_secure --message'
 alias gcs='git_commit_secure --gpg-sign'
 alias gcss='git_commit_secure --gpg-sign --signoff'
 alias gcssm='git_commit_secure --gpg-sign --signoff --message'
+alias gcamm='git_commit_secure --gpg-sign --amend --message "$(commitmsg)"'
+
 
 ## Other Git aliases
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git_commit_secure --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'

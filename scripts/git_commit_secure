@@ -1,11 +1,15 @@
 #!/usr/bin/env zsh
 
-changed_files=$( { gd --name-only ; gd --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
+changed_files=$( { git diff --name-only ; git diff --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
 changed_files=("${(f)changed_files}")
 
 for file in $changed_files; do
-    contents=$( grep -e 'mongodb://' $file )
-    if [[ ! -z "$contents" ]]; then
+    mongo=$( egrep 'mongodb://' $file )
+    aws=$( egrep '(?:.*)(?:AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID)(?:\s)?[=:]?(.+$)(?:\s)?' $file )
+    ssh=$( egrep 'BEGIN OPENSSH PRIVATE KEY' $file )
+    gcloud=$( egrep '(?:"client_secret":\s?"?)([^"\s]+)' $file )
+
+    if [[ ! -z "$mongo$aws$ssh$gcloud" ]]; then
         echo "NOT LETTING YOU COMMIT CREDENTIALS!"
         exit 1
     else
