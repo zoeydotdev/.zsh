@@ -11,6 +11,7 @@ alias v.='nvim .'
 # prefer ~/global/git_commit_secure to protect credentials
 
 # Git committing aliases
+alias 'git commit'='git commit --gpg-sign'
 alias gc='git_commit_secure --verbose'
 alias gc!='git_commit_secure --verbose --amend'
 alias gcn!='git_commit_secure --verbose --no-edit --amend'
@@ -23,14 +24,14 @@ alias gcsm='git_commit_secure --signoff --message'
 alias gcas='git_commit_secure --all --signoff'
 alias gcasm='git_commit_secure --all --signoff --message'
 alias gcmsg='git_commit_secure --message'
-alias gcs='git_commit_secure --gpg-sign'
-alias gcss='git_commit_secure --gpg-sign --signoff'
-alias gcssm='git_commit_secure --gpg-sign --signoff --message'
-alias gcamm='git_commit_secure --gpg-sign --amend --message "$(commitmsg)"'
+alias gcs='git_commit_secure'
+alias gcss='git_commit_secure --signoff'
+alias gcssm='git_commit_secure --signoff --message'
+alias gcamm='git_commit_secure --amend --message "$(commitmsg)"'
 
 
 ## Other Git aliases
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git_commit_secure --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; $(which git) commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
 alias gstall='git stash -a'
 
 # PostgreSQL aliases
