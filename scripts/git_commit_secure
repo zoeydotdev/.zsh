@@ -8,9 +8,12 @@ for file in $changed_files; do
     aws=$( egrep '(?:.*)(?:AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID)(?:\s)?[=:]?(.+$)(?:\s)?' $file )
     ssh=$( egrep 'BEGIN OPENSSH PRIVATE KEY' $file )
     gcloud=$( egrep '(?:"client_secret":\s?"?)([^"\s]+)' $file )
+    matches="$mongo$aws$ssh$gcloud"
 
-    if [[ ! -z "$mongo$aws$ssh$gcloud" ]]; then
+    if [[ ! -z "$matches" ]]; then
         echo "NOT LETTING YOU COMMIT CREDENTIALS!"
+        echo "Offending file: $file"
+        echo "Offending content: $matches"
         exit 1
     else
         git commit $@
