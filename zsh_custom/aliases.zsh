@@ -46,6 +46,7 @@ alias pgdown='pg_ctl -D /opt/homebrew/var/postgresql@14 stop > /dev/null'
 alias dcb='docker compose build'
 alias dcu='docker compose up'
 alias dbu='docker compose up --build'
+alias dls='docker container ls'
 
 # Alias software with inconvenient names
 alias fly='flyctl'

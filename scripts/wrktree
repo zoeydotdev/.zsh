@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+TREE_NAME="$1"
+[[ -z "$TREE_NAME" ]] \
+    && echo "Directory name required." \
+    && exit 1
+
+COMMIT="$2"
+[[ -z "$COMMIT" ]] \
+    && echo "Commitish (branch/commit) required." \
+    && exit 2
+
+git worktree add $( dirname `pwd` )/$TREE_NAME $COMMIT
