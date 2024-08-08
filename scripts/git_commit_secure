@@ -1,10 +1,16 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-changed_files=$( { git diff --name-only ; git diff --name-only --staged ; git ls-files --other --exclude-standard ; } | sort | uniq )
+changed_files=$(
+    {
+        git diff --name-only;
+        git diff --name-only --staged;
+        git ls-files --other --exclude-standard;
+    } | sort | uniq
+)
 changed_files=("${(f)changed_files}")
 
 for file in $changed_files; do
-    mongo=$( egrep 'mongodb://' $file )
+    mongo=$( egrep '(?:mongodb(+srv)?://)(.+$)' $file )
     aws=$( egrep '(?:.*)(?:AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID)(?:\s)?[=:]?(.+$)(?:\s)?' $file )
     ssh=$( egrep 'BEGIN OPENSSH PRIVATE KEY' $file )
     gcloud=$( egrep '(?:"client_secret":\s?"?)([^"\s]+)' $file )
@@ -15,7 +21,7 @@ for file in $changed_files; do
         echo "Offending file: $file"
         echo "Offending content: $matches"
         exit 1
-    else
-        git commit $@
     fi
 done
+
+git commit $@
