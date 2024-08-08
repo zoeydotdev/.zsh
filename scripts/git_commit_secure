@@ -1,16 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 changed_files=$(
     {
         git diff --name-only;
         git diff --name-only --staged;
         git ls-files --other --exclude-standard;
-    } | sort | uniq
+    } | sort | uniq;
 )
 changed_files=("${(f)changed_files}")
 
 for file in $changed_files; do
-    mongo=$( egrep '(?:mongodb(+srv)?://)(.+$)' $file )
+    mongo=$( egrep '(?:mongodb(\+srv)?://)(.+$)' $file )
     aws=$( egrep '(?:.*)(?:AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID)(?:\s)?[=:]?(.+$)(?:\s)?' $file )
     ssh=$( egrep 'BEGIN OPENSSH PRIVATE KEY' $file )
     gcloud=$( egrep '(?:"client_secret":\s?"?)([^"\s]+)' $file )
