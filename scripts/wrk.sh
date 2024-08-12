@@ -38,8 +38,8 @@ function get_unsup_help() { echo "Illegal argument: wrk.sh $@"; echo; get_help 1
 ################################################
 
 for ARGUMENT in "$@"; do
-    KEY=$(echo $ARGUMENT | cut -f1 -d=)
-    VALUE=$(echo $ARGUMENT | cut -f2 -d=)
+    KEY=$( echo $ARGUMENT | cut -f1 -d= )
+    VALUE=$( echo $ARGUMENT | cut -f2 -d= )
 
     case "$KEY" in
         -s*)        SERVICE=${KEY/-s/}         ;;
@@ -95,7 +95,7 @@ AUTH_TOKEN=$( get_auth_token $ENDPOINT $SITE_ID )
 ##  Test performance
 ################################################
 
-wrk_script=$(ls *wrk.lua | head -n 1)
+wrk_script=$( ls *wrk.lua | head -n 1 )
 
 if [[ -z "$LOGFILE" ]]; then
     read -r -d '' CMD << EOF

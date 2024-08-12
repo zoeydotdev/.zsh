@@ -74,7 +74,7 @@ plugins=(brew celery git golang httpie python vscode)
 source $ZSH/oh-my-zsh.sh
 
 # Configure GPG for signing and verifying GitHub/GitLab commits
-export GPG_TTY=$(tty)
+export GPG_TTY=$( tty )
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -91,7 +91,7 @@ fi
 export VISUAL="$EDITOR"
 
 # Configure direnv
-eval "$(direnv hook zsh)"
+eval "$( direnv hook zsh )"
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit

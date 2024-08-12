@@ -27,11 +27,11 @@ alias gcmsg='git_commit_secure --message'
 alias gcs='git_commit_secure'
 alias gcss='git_commit_secure --signoff'
 alias gcssm='git_commit_secure --signoff --message'
-alias gcamm='git_commit_secure --amend --message "$(commitmsg)"'
+alias gcamm='git_commit_secure --amend --message "$( commitmsg )"'
 
 
 ## Other Git aliases
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; $(which git) commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
+alias gwip='git add -A; git rm $( git ls-files --deleted ) 2> /dev/null; $( which git ) commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
 alias branch='git branch --show-current'
 alias gstall='git stash .'
 alias dfy='gitdf -y'
@@ -54,7 +54,7 @@ alias fly='flyctl'
 
 # brewdeps will list all formulas that aren't dependents of any other formulas,
 # and all of their dependencies
-alias brewdeps='brew leaves | xargs brew deps --formula --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
+alias brewdeps='brew leaves | xargs brew deps --formula --for-each | sed "s/^.*:/$( tput setaf 4 )&$( tput sgr0 )/"'
 
 # Generate filetree with nesting levels
 alias tree='tree -v --filesfirst --charset utf-8 -h --du'
