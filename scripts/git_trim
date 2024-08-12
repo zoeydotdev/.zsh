@@ -6,7 +6,7 @@ delete_flag="$1"
 [[ -z "$delete_flag" ]] && delete_flag="-d"
 
 main_branch=$( default_branch )
-curr_branch=$( git_current_branch )
+curr_branch=$( git branch --show-current )
 
 for branch in $( git branch | awk '{ print $1 }' ); do
     if [[ "$branch" != "$curr_branch" && "$branch" != "$main_branch" ]]; then

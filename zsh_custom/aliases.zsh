@@ -32,7 +32,8 @@ alias gcamm='git_commit_secure --amend --message "$(commitmsg)"'
 
 ## Other Git aliases
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; $(which git) commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
-alias gstall='git stash -a'
+alias branch='git branch --show-current'
+alias gstall='git stash .'
 alias dfy='gitdf -y'
 
 # PostgreSQL aliases
