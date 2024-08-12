@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Squashes all commits on the current branch into a single commit pointing to
+# the HEAD of this repo's default branch
+
+git reset $( git merge-base $( default_branch ) $( git branch --show-current ) )
