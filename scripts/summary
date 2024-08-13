@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+format='%h|%s (%cr by %ae)'
+
 SUMMARIZE_TO="$1"
 [[ -z "$SUMMARIZE_TO" ]] \
     && echo "Don't know where to summarize to. Exiting" \
     && exit 1
 
 # "~" selects the nth (in this case 1 previous) commit before leftside commit sha
-commit_msgs="$( git log --format='%h|%s' $SUMMARIZE_TO~1..HEAD )"
+commit_msgs="$( git log --no-merges --format="$format" $SUMMARIZE_TO~1..HEAD )"
 while IFS= read -r message; do
     # summarize each commit
     commit=$( echo $message | cut -d\| -f1 )

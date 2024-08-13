@@ -7,7 +7,7 @@ shift
 ticket="$@"
 [[ -z "$ticket" ]] && ticket=$( which_tix )
 
-if [[ ! -z "$ticket" && "$ticket" != "TRIVIAL" ]]; then
+if [[ ! -z "$ticket" && "$ticket" != "TRIVIAL" && "$ticket" != "Merge" ]]; then
     [[ $OPEN -eq 1 ]] && t $ticket || to $ticket
 else
     echo "TRIVIAL"

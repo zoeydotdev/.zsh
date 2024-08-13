@@ -6,7 +6,7 @@ curdir=`pwd`
 for dir in $( all_git_repos ); do
     cd $dir;
 
-    updates="$( yesterday "$@" )"
+    updates="$( last_week "$@" )"
     if [[ ! -z "$updates" ]]; then
         echo "[INFO] Repository: $dir"
         echo "$updates"

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 [[ -z "$@" ]] \
     && echo "Description: prints a tracking ticket link" \
     && echo "Usage: to [ticket_number] [ticket_number] [ticket_number]..." \

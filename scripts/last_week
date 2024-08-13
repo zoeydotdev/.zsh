@@ -2,7 +2,7 @@
 
 format='%h|%s (%cr by %ae)'
 today=$( date '+%F' )
-two_days_ago=$( date -v-2d '+%F' )
+two_days_ago=$( date -v-8d '+%F' )
 
 # update the repository, silently
 git_up > /dev/null 2>&1
