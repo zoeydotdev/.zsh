@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OPEN=1
+[[ "$1" == "-o" ]] && OPEN=0
+shift
+
+ticket="$@"
+[[ -z "$ticket" ]] && ticket=$( which_tix )
+
+if [[ ! -z "$ticket" && "$ticket" != "TRIVIAL" ]]; then
+    [[ $OPEN -eq 1 ]] && t $ticket || to $ticket
+else
+    echo "TRIVIAL"
+fi

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SUMMARIZE_TO="$1"
+[[ -z "$SUMMARIZE_TO" ]] \
+    && echo "Don't know where to summarize to. Exiting" \
+    && exit 1
+
+commit_msgs="$( git log --format=%B $SUMMARIZE_TO..HEAD | sed -r '/^\s*$/d' )"
+while IFS= read -r message; do
+    ticket=$( which_tix "$message" )
+    url=$( tix -o "$ticket" )
+
+    echo "$url ${message/$ticket }"
+done <<< "$commit_msgs"
