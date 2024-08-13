@@ -16,4 +16,4 @@ for branch in $( git branch | awk '{ print $1 }' ); do
 done
 
 # trim remotes that have been deleted
-git fetch -apq
+git fetch -apq > /dev/null 2>&1

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for repo in $( ls -d $HOME/repos/{github,gitlab}/*/.git ); do
+    dirname $repo
+done
