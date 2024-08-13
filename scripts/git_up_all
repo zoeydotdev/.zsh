@@ -6,7 +6,7 @@ curdir=`pwd`
 for dir in $( all_git_repos ); do
     repo=$( echo $dir | awk -F/ '{ print $NF }' )
     echo "[INFO] Repository: $repo" && cd $dir
-    git_up &
+    git_up
 done
 
 cd $curdir
