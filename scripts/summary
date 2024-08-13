@@ -5,10 +5,17 @@ SUMMARIZE_TO="$1"
     && echo "Don't know where to summarize to. Exiting" \
     && exit 1
 
-commit_msgs="$( git log --format=%B $SUMMARIZE_TO..HEAD | sed -r '/^\s*$/d' )"
+# "~" selects the nth (in this case 1 previous) commit before leftside commit sha
+commit_msgs="$( git log --format='%h|%s' $SUMMARIZE_TO~1..HEAD )"
 while IFS= read -r message; do
+    # summarize each commit
+    commit=$( echo $message | cut -d\| -f1 )
+    tag=$( git tag --points-at $commit )
+    [[ -z "$tag" ]] && tag="$commit"
+
+    message=$( echo $message | cut -d\| -f2 )
     ticket=$( which_tix "$message" )
     url=$( tix -o "$ticket" )
 
-    echo "$url ${message/$ticket }"
+    echo "$tag $url ${message/$ticket }"
 done <<< "$commit_msgs"

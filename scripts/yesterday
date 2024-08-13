@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+curdir=`pwd`
+
+today=$( date '+%F' )
+before_yesterday=$( date -v-2d '+%F' )
+
+# summarize all git repos
+for dir in $( all_git_repos ); do
+    repo=$( echo $dir | awk -F/ '{ print $NF }' )
+    echo "[INFO] Repository: $repo" && cd $dir
+
+    # update the repository, silently
+    git_up > /dev/null 2>&1
+
+    # gather range of commit hashes and subjects between 2 days ago and today
+    commit_msgs="$( git log --format='%h|%s' --since=$before_yesterday --before=$today )"
+    while IFS= read -r message; do
+        # summarize each commit
+        commit=$( echo $message | cut -d\| -f1 )
+        tag=$( git tag --points-at $commit )
+        [[ -z "$tag" ]] && tag="$commit"
+
+        message=$( echo $message | cut -d\| -f2 )
+        ticket=$( which_tix "$message" )
+        url=$( tix -o "$ticket" )
+
+        echo "$tag $url ${message/$ticket }"
+    done <<< "$commit_msgs"
+done
