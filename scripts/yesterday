@@ -1,36 +1,23 @@
 #!/usr/bin/env bash
 
-format='%h|%s (%cr by %ae)'
-today=$( date '+%F' )
-two_days_ago=$( date -v-2d '+%F' )
+date_fmt='+%FT00:00%z'
+midnight=$( date $date_fmt )
+two_days_ago=$( date -v-2d $date_fmt )
 
 # update the repository, silently
 git_up > /dev/null 2>&1
 
 # gather range of commit hashes and subjects after 2 days ago and before today
-AUTHORED="$@"
-if [[ ! -z "$AUTHORED" ]]; then
-    # if anything passed to script, only get logs I myself committed
-    commit_msgs="$( git log --no-merges --format="$format" --since=$two_days_ago --before=$today --committer="$( git config --get user.email )" )"
+AUTHORED="$1"
+if [[ "$AUTHORED" == "-a" ]]; then
+    # if -a flag passed to script, only get logs I myself committed
+    hashes=$( git log --no-merges --format="%H" --since=$two_days_ago --before=$midnight --committer="$( git config --get user.email )" )
 else
     # otherwise, get logs committed by anyone
-    commit_msgs="$( git log --no-merges --format="$format" --since=$two_days_ago --before=$today )"
+    hashes=$( git log --no-merges --format="%H" --since=$two_days_ago --before=$midnight )
 fi
 
-# gather range of commit hashes and subjects between 2 days ago and today
-while IFS= read -r message; do
-    # summarize each commit
-    commit=$( echo $message | cut -d\| -f1 )
+oldest_hash=$( echo "$hashes" | tail -n 1 )
+newest_hash=$( echo "$hashes" | head -n 1 )
 
-    tag=$( git tag --points-at $commit )
-    [[ -z "$tag" ]] && tag="$commit"
-
-    message=$( echo $message | cut -d\| -f2 )
-    ticket=$( which_tix "$message" )
-    url=$( tix -o "$ticket" )
-
-    # if no commit or message, don't output anything
-    [[ -z "$commit" || -z "$message" ]] && break
-
-    echo "$tag $url ${message/$ticket}"
-done <<< "$commit_msgs"
+summary "$oldest_hash" "$newest_hash"

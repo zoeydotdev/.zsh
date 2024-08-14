@@ -2,13 +2,16 @@
 
 format='%h|%s (%cr by %ae)'
 
-SUMMARIZE_TO="$1"
-[[ -z "$SUMMARIZE_TO" ]] \
-    && echo "Don't know where to summarize to. Exiting" \
+OLDEST="$1"
+[[ -z "$OLDEST" ]] \
+    && echo "Don't know how far back to start summarizing. Exiting" \
     && exit 1
 
+NEWEST="$2"
+[[ -z "$NEWEST" ]] && NEWEST="HEAD"
+
 # "~" selects the nth (in this case 1 previous) commit before leftside commit sha
-commit_msgs="$( git log --no-merges --format="$format" $SUMMARIZE_TO~1..HEAD )"
+commit_msgs="$( git log --no-merges --format="$format" $OLDEST~1..$NEWEST )"
 while IFS= read -r message; do
     # summarize each commit
     commit=$( echo $message | cut -d\| -f1 )
@@ -19,5 +22,5 @@ while IFS= read -r message; do
     ticket=$( which_tix "$message" )
     url=$( tix -o "$ticket" )
 
-    echo "$tag $url ${message/$ticket }"
+    echo "$tag $url ${message/$ticket}"
 done <<< "$commit_msgs"
