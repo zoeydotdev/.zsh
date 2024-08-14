@@ -2,7 +2,7 @@
 
 format='%h|%s (%cr by %ae)'
 today=$( date '+%F' )
-two_days_ago=$( date -v-8d '+%F' )
+eight_days_ago=$( date -v-8d '+%F' )
 
 # update the repository, silently
 git_up > /dev/null 2>&1
@@ -11,10 +11,10 @@ git_up > /dev/null 2>&1
 AUTHORED="$@"
 if [[ ! -z "$AUTHORED" ]]; then
     # if anything passed to script, only get logs I myself committed
-    commit_msgs="$( git log --no-merges --format="$format" --since=$two_days_ago --before=$today --committer="$( git config --get user.email )" )"
+    commit_msgs="$( git log --no-merges --format="$format" --since=$eight_days_ago --before=$today --committer="$( git config --get user.email )" )"
 else
     # otherwise, get logs committed by anyone
-    commit_msgs="$( git log --no-merges --format="$format" --since=$two_days_ago --before=$today )"
+    commit_msgs="$( git log --no-merges --format="$format" --since=$eight_days_ago --before=$today )"
 fi
 
 # gather range of commit hashes and subjects between 2 days ago and today
