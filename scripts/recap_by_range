@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-format='%h|%s (%cr by %ae)'
+FORMAT='%h|%s (%cr by %ae)'
 
 OLDEST="$1"
 [[ -z "$OLDEST" ]] \
@@ -11,16 +11,16 @@ NEWEST="$2"
 [[ -z "$NEWEST" ]] && NEWEST="HEAD"
 
 # "~" selects the nth (in this case 1 previous) commit before leftside commit sha
-commit_msgs="$( git log --no-merges --format="$format" $OLDEST~1..$NEWEST )"
+commit_msgs="$( git log --no-merges --format="$FORMAT" $OLDEST~1..$NEWEST )"
 while IFS= read -r message; do
     # summarize each commit
-    commit=$( echo $message | cut -d\| -f1 )
-    tag=$( git tag --points-at $commit )
-    [[ -z "$tag" ]] && tag="$commit"
+    hash=$( echo $message | cut -d\| -f1 )
+    tag=$( git tag --points-at $hash )
+    [[ -z "$tag" ]] && tag="$hash"
 
-    message=$( echo $message | cut -d\| -f2 )
-    ticket=$( which_tix "$message" )
+    subject=$( echo $message | cut -d\| -f2 )
+    ticket=$( which_tix "$subject" )
     url=$( tix -o "$ticket" )
 
-    echo "$tag $url ${message/$ticket}"
+    echo "$tag $url ${subject/$ticket}"
 done <<< "$commit_msgs"
