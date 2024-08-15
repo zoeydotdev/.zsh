@@ -1,21 +1,7 @@
 #!/usr/bin/env bash
 
-# trim all branches, except for whatever this repository's default branch is
-
-# checkout default branch
-gitcd
-main_branch=$( default_branch )
-
-delete_flag="$1"
-[[ -z "$delete_flag" ]] && delete_flag="-d"
-
-# delete all branches except current branch
-for branch in $( git branch | awk '{ print $1 }' ); do
-    if [[ "$branch" != "$main_branch" ]]; then
-        echo "deleting branch $branch"
-        git branch $delete_flag $branch
-    fi
+# update all repos with a .git/ folder inside ~/repos
+for dir in $( all_git_repos ); do
+    echo "[INFO] Repository: $dir"
+    (cd $dir && git_trim "$@")
 done
-
-# trim remotes that have been deleted
-git fetch -apq > /dev/null 2>&1

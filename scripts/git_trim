@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
 
-# trim all branches, excluding the current branch and default branch
+# trim all branches, excluding default branch
+# delete the current branch as well if `-all` passed
 
-delete_flag="$1"
+for ARGUMENT in "$@"; do
+    case $ARGUMENT in
+        -d) [[ -z $delete_flag ]] && delete_flag="-d" ;;
+        -D) [[ -z $delete_flag ]] && delete_flag="-D" ;;
+        *-all) curr_branch=$( default_branch )
+
+        *)  ;;
+    esac
+done
+
 [[ -z "$delete_flag" ]] && delete_flag="-d"
 
 main_branch=$( default_branch )
-curr_branch=$( git branch --show-current )
+[[ -z $curr_branch ]] && curr_branch=$( git branch --show-current )
+git switch $main_branch
 
-for branch in $( git branch | awk '{ print $1 }' ); do
+for branch in $( git --no-pager branch -l --format="%(refname:lstrip=2)" ); do
     if [[ "$branch" != "$curr_branch" && "$branch" != "$main_branch" ]]; then
         echo "deleting branch $branch"
         git branch $delete_flag $branch

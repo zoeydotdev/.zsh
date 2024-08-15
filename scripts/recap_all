@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function recap_one() {
+    updates="$( recap_by_dates "$@" )"
+
+    if [[ ! -z "$updates" ]]; then
+        echo "[INFO] Repository: $dir"
+        echo "$updates"
+        echo
+    fi
+}
+
+for dir in $( all_git_repos ); do
+    (cd $dir && recap_one "$@")
+done

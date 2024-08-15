@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-curdir=`pwd`
-
 # update all repos with a .git/ folder inside ~/repos
 for dir in $( all_git_repos ); do
-    repo=$( echo $dir | awk -F/ '{ print $NF }' )
-    echo "[INFO] Repository: $repo" && cd $dir
-    git gc &
+    echo "[INFO] Repository: $dir"
+    (cd $dir && git gc &)
 done
-
-cd $curdir
