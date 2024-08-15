@@ -59,4 +59,7 @@ alias brewdeps='brew leaves | xargs brew deps --formula --for-each | sed "s/^.*:
 # Generate filetree with nesting levels
 alias tree='tree -v --filesfirst --charset utf-8 -h --du'
 
+# print a ticket link without opening the ticket in browser
+alias to='t -o'
+
 source $ZSH_CUSTOM/functions.zsh

@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-OPEN=1
-[[ "$1" == "-o" ]] && OPEN=0
+[[ "$1" == "-o" ]] && OPEN_FLAG="-o"
 shift
 
 ticket="$@"
 [[ -z "$ticket" ]] && ticket=$( which_tix )
 
 if [[ ! -z "$ticket" && "$ticket" != "TRIVIAL" && "$ticket" != "Merge" ]]; then
-    [[ $OPEN -eq 1 ]] && t $ticket || to $ticket
+    t $OPEN_FLAG $ticket
 else
     echo "TRIVIAL"
 fi

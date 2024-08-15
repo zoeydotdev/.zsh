@@ -2,12 +2,19 @@
 
 [[ -z "$@" ]] \
     && echo "Description: opens a tracking ticket in the default browser" \
-    && echo "Usage: t [ticket_number] [ticket_number] [ticket_number]..." \
+    && echo "Usage: t [-o] [ticket_number] [ticket_number] [ticket_number]..." \
     && echo \
     && exit 1
 
-for ticket in $@; do
+for ARGUMENT in "$@"; do
+    case "$ARGUMENT" in
+        -o) ONLY_ECHO=1                 ;;
+        *) tickets="$tickets$ARGUMENT " ;;
+    esac
+done
+
+for ticket in $tickets; do
     URL="$TICKETING_URL$ticket"
-    echo "opening $URL"
-    open $URL
+    echo "$URL"
+    [[ $ONLY_ECHO -ne 1 ]] && open "$URL"
 done
