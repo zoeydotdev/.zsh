@@ -62,4 +62,7 @@ alias tree='tree -v --filesfirst --charset utf-8 -h --du'
 # print a ticket link without opening the ticket in browser
 alias to='t -o'
 
+# :q on console closes the tab
+alias ':q'='exit'
+
 source $ZSH_CUSTOM/functions.zsh
