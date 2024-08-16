@@ -36,3 +36,5 @@
     enabled = true
 [branch]
     sort = -committerdate
+[alias]
+	s = status
