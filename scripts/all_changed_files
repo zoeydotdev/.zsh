@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+# Create a list of git tracked file changes that can be used to
+# perform operations for all changed files, such as applying formatting.
+
+changed_files=$(
+    {
+        git diff --name-only;
+        git diff --name-only --staged;
+        git ls-files --other --exclude-standard;
+    } | sort | uniq;
+)
+
+echo $changed_files
