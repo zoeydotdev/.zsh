@@ -65,4 +65,7 @@ alias to='t -o'
 # :q on console closes the tab
 alias ':q'='exit'
 
+# x on console adds the execution bit to a file
+alias 'x'='chmod +x'
+
 source $ZSH_CUSTOM/functions.zsh
