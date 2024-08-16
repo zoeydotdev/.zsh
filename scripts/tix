@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-[[ "$1" == "-o" ]] && OPEN_FLAG="-o"
-shift
+# Extracts a ticket number from commit message if none passed to script
+# and then prints/opens it in browser IF the ticket is not TRIVIAL or Merge
 
-ticket="$@"
+for ARGUMENT in "$@"; do
+    case "$ARGUMENT" in
+        -o) OPEN_FLAG="-o"      ;;
+        *)  ticket="$ARGUMENT"  ;;
+    esac
+done
+
 [[ -z "$ticket" ]] && ticket=$( which_tix )
-
 if [[ ! -z "$ticket" && "$ticket" != "TRIVIAL" && "$ticket" != "Merge" ]]; then
     t $OPEN_FLAG $ticket
 else

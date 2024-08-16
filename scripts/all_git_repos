@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-for repo in $( ls -d $HOME/repos/{github,gitlab}/*/.git ); do
+# Create a list of git repositories that can be used in scripting
+# operations to perform across all repos.
+
+[[ -z "$REPOS_ROOT" ]] && REPOS_ROOT="$HOME"
+
+for repo in $( ls -d $REPOS_ROOT/{github,gitlab}/*/.git ); do
     dirname $repo
 done

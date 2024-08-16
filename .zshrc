@@ -107,5 +107,8 @@ export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv"
 # Used to privatize ticketing system
 export TICKETING_URL=
 
-# used to generate Nvim colorschemes based on words or phrases
+# Used to customize where git repos are for each system
+export REPOS_ROOT=
+
+# Used to generate Nvim colorschemes based on words or phrases
 export OPENAI_API_KEY=
