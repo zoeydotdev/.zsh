@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# update all repos with a .git/ folder inside ~/repos
+# Cleanup unnecessary files and optimize all git repos
+
 for dir in $( all_git_repos ); do
     echo "[INFO] Repository: $dir"
     (cd $dir && git gc &)

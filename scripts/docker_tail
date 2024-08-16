@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Tail a docker container's configured logfile.
+# If container is not running, script will wait for container to start
+# before logging in and tailing logs.
+
 CONTAINER="$1"
 [[ -z "$CONTAINER" ]] \
     && echo "No container name/ID provided. Exiting." \

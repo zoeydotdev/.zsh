@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-PORT="$1"
 
+# Get a list of process identifiers running on a given port
+
+PORT="$1"
 [[ -z "$PORT" ]] \
     && echo "No port provided. Exiting" \
     && exit 1;

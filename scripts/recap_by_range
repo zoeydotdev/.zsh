@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Generate a summary of git commit activity between the provided oldest commit
+# and newest commit. If no newest commit, `HEAD` is used by default.
+
 function build_line() {
     # summarize each commit
     tag="$1"

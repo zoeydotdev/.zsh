@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Create a list of git repositories that can be used in scripting
-# operations to perform across all repos.
+# Create a list of git repositories that can be used to
+# perform operations across all repos.
 
 [[ -z "$REPOS_ROOT" ]] && REPOS_ROOT="$HOME"
 

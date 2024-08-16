@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Uploads all executable scripts located in ssh_scripts/
+# to a remote SSH host before connecting to that host
+
 RM_HOST="$1"
 [[ -z $RM_HOST ]] \
     && echo "No ssh host supplied. Exiting" \

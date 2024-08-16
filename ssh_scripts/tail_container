@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+# Tail a container's logs on a remote host
+
 C=$( get_container )
 sudo tail -f /var/lib/docker/containers/$C/$C-json.log

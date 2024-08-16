@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+# Diff git changes against the default branch in a dedicated difftool window
+
 git difftool $( default_branch ) "$@"

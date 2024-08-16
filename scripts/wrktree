@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+# Create a new git worktree for the repo in the parent folder
+
+[[ ! -d .git ]] && echo "Not a git repository" && exit 1
+
 TREE_NAME="$1"
 [[ -z "$TREE_NAME" ]] \
     && echo "Directory name required." \
-    && exit 1
+    && exit 2
 
 COMMIT="$2"
 [[ -z "$COMMIT" ]] \
     && echo "Commitish (branch/commit) required." \
-    && exit 2
+    && exit 3
 
 git worktree add $( dirname `pwd` )/$TREE_NAME $COMMIT

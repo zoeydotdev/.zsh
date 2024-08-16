@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+# (nvim integration)
+# Extracts the nearest URL to the cursor by parsing the line
+# the cursor is currently on and the cursor's position in the line
+
 import re
 import shlex
 import sys

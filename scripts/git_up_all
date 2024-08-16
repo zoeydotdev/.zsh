@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# update all repos with a .git/ folder inside ~/repos
+# Update default branches of all git repos
+
 for dir in $( all_git_repos ); do
     echo "[INFO] Repository: $dir"
     (cd $dir && git_up)

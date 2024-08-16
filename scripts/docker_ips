@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Create a list of IP addresses for all running docker containers
+
+for c in `docker ps -q`; do
+    docker inspect \
+        -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $c \
+    | sed -r '/^\s?$/d' | uniq | sort
+done

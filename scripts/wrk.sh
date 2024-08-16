@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Performance/load test an API service after authenticating.
+
 ################################################
 ##  Script Information
 ################################################

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# trim all branches, excluding default branch
-# delete the current branch as well if `-all` passed
+# Delete all branches excluding the default branch unless the
+# `-all` flag is passed, in which case only the default branch remains
 
 for ARGUMENT in "$@"; do
     case $ARGUMENT in

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+# Get the commit body of the last commit message
+
 git --no-pager log --format=%B -n 1 HEAD

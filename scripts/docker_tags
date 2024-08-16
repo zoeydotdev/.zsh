@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Request a list of all published tags for all provided docker images
+
 token_uri="https://auth.docker.io/token"
 list_uri="https://registry-1.docker.io/v2/###IMAGE###/tags/list"
 

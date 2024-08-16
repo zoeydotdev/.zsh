@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Open a hex package's documentation page in the default browser
+
 [[ -z "$1" ]] \
     && echo "Description: opens hex.pm package documentation in your default browser" \
     && echo "Usage: hex [package_name]" \

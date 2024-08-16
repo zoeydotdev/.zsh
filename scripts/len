@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+# Obtain the string length of arguments passed to the script
+
 msg="$@"
 python -c "print(len(\"$msg\"))"

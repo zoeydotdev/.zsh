@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-PID="$1"
+# Kill a process with -9 flag
 
+PID="$1"
 [[ -z "$PID" ]] \
     && echo "No PID provided. Exiting" \
     && exit 1;

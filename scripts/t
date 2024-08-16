@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Open tracking tickets in the default browser or just print them to console
+
 [[ -z "$@" ]] \
     && echo "Description: opens a tracking ticket in the default browser" \
     && echo "Usage: t [-o] [ticket_number] [ticket_number] [ticket_number]..." \

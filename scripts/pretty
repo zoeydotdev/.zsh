@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Sanitize and prettify JSON before printing to console
+
 args=$@
 [[ -z "$args" ]] && args="--indent 2"
 

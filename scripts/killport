@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-PORT="$1"
+# Kill all processes running on a given port if PID is unknown
 
+PORT="$1"
 [[ -z "$PORT" ]] \
     && echo "No port provided. Exiting" \
     && exit 1;

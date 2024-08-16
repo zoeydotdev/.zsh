@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# Shell-escapes JSON input for piping to other scripts, such as pretty printing
+
 import sys
 
 def sani(data):

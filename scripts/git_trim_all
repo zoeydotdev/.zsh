@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-# update all repos with a .git/ folder inside ~/repos
+# Deletes all branches in all repos except for the current branch
+# and the default branch unless the `-all` flag is passed,
+# in which case only the default branch remains
+
 for dir in $( all_git_repos ); do
     echo "[INFO] Repository: $dir"
     (cd $dir && git_trim "$@")

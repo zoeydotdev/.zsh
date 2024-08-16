@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# update all repos with a .git/ folder inside ~/repos
+# Garbage collect all unreachable objects in all git repos
+
 for dir in $( all_git_repos ); do
     echo "[INFO] Repository: $dir"
     (cd $dir && git prune --progress &)

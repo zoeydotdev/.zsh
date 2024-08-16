@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Generate a recap of git activity between dates for all git repos
+
 function recap_one() {
     updates="$( recap_by_dates "$@" )"
 

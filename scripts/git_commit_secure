@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Parse file changes to ensure secrets are not being committed and
+# print any potential secrets to console for review if any matches found
+
 for file in $( all_changed_files ); do
     mongo=$( egrep '(?:mongodb(\+srv)?://)(.+$)' $file )
     aws=$( egrep '(?:.*)(?:AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID)(?:\s)?[=:]?(.+$)(?:\s)?' $file )

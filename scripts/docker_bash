@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Waits for a given container to start and then
+# starts and interactive bash shell in the container
+
 CONTAINER="$1"
 [[ -z "$CONTAINER" ]] \
     && echo "No container name/ID provided. Exiting." \

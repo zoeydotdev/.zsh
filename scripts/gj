@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# gj - search by ticket number can checkout a local or remote branch
+# Locally checkout a git branch or remote based on the provided ticket number
+# If no match is found, a new branch is created with the search term
 
 stash_work() {
     [[ ! -z `git status -suall --renames` ]] \

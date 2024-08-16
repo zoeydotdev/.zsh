@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+# Checkout a repo's default branch, and fetch and pull all recent updates
+
 gitcd && git fetch -apq && git pull
