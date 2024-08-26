@@ -4,7 +4,7 @@
 # If no match is found, a new branch is created with the search term
 
 stash_work() {
-    [[ ! -z `git status -suall --renames` ]] \
+    [[ ! -z "$( all_changed_files )" ]] \
         && echo "STASHING WORK" \
         && git stash -a -m "temporary stashing for gj: $search"
 }
@@ -20,19 +20,19 @@ search=$@
 
 git_up 2>&1
 
-remote=`git branch -ar | grep -ie "$search"`
-local_branch=`git branch -a | grep -ie "$search"`
+remote=$( git branch -r --format="%(refname:lstrip=3)" | egrep -i "$search" )
+local_branch=$( git branch | egrep -i "$search" )
 
 if [[ ! -z "${remote}${local_branch}" ]]; then
     stash_work
 fi
 
-if [[ ! -z "$remote" ]]; then
-    echo "FOUND REMOTES: $remote"
-    git checkout ${remote#"origin/"}
-elif [[ ! -z "$local_branch" ]]; then
+if [[ ! -z "$local_branch" && -z "$remote" ]]; then
     echo "FOUND LOCAL ONLY: $local_branch"
     git checkout $local_branch
+elif [[ ! -z "$remote" ]]; then
+    echo "FOUND REMOTES: $remote"
+    git checkout $remote
 elif [[ `len $search` -gt 9 ]]; then
     # 4 char prefix + 5 numbers makes a ticket number
     # checkout a local branch with a longer branch name
