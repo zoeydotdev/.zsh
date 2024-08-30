@@ -22,6 +22,8 @@ function build_line() {
             line="$line $subject"
         fi
         echo "$line $author"
+    elif [[ "$ticket" -eq "TRIVIAL" ]]; then
+        echo "$tag $url ${subject/$ticket} $author"
     else
         echo "$tag $url ${subject/$ticket } $author"
     fi
@@ -50,9 +52,9 @@ done
 
 [[ -z "$NEWEST" ]] && NEWEST="HEAD"
 
-FORMAT='%h|%s|(Committed %cr by %ce, authored by %ae)'
+FORMAT='%h|%s|(Committed %cs by %ce, authored by %ae)'
 if [[ $MARKDOWN -eq 1 ]]; then
-    FORMAT='%h|%s|(Committed %cr by %ce, authored by [%ae](mailto:%ae))'
+    FORMAT='%h|%s|(Committed %cs by %ce, authored by [%ae](mailto:%ae))'
 fi
 
 # modify SSH origin url into an https link
@@ -69,7 +71,13 @@ if [[ $REVERSE -eq 1 ]]; then
 else
     TAGSORT="-taggerdate"
 fi
-commit_msgs="$( git log --no-merges --format="$FORMAT" $DIRECTION $OLDEST~1..$NEWEST )"
+
+# if parent of OLDEST hash does not exist, use OLDEST instead of OLDEST~1
+commit_msgs="$( git log --no-merges --format="$FORMAT" $DIRECTION $OLDEST~1..$NEWEST 2>&1 )"
+rc=$?
+[[ $rc -ne 0 ]] \
+    && commit_msgs="$( git log --no-merges --format="$FORMAT" $DIRECTION $OLDEST..$NEWEST )"
+
 while IFS= read -r message; do
     hash=$( echo $message | cut -d\| -f1 )
     tags=$( git --no-pager tag --sort=$TAGSORT --points-at $hash )
