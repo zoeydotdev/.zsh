@@ -23,10 +23,12 @@
 
 [difftool "opendiff"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
+    path =
+
 [mergetool "opendiff"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
+
 [diff]
     tool = opendiff
 
@@ -37,4 +39,6 @@
 [branch]
     sort = -committerdate
 [alias]
-	s = status
+    s = status
+    c = checkout
+    lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
