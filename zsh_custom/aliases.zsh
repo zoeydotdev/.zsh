@@ -28,17 +28,19 @@ alias gcs='git_commit_secure'
 alias gcss='git_commit_secure --signoff'
 alias gcssm='git_commit_secure --signoff --message'
 alias gcamm='git_commit_secure --amend --message "$( commitmsg )"'
+alias gcaamm='git add -A; git rm $( git ls-files -- deleted ) 2> /dev/null; git_commit_secure --amend --message "$( commitmsg )"'
 
 
 ## Other Git aliases
+alias g='git --no-pager'
 alias gwip='git add -A; git rm $( git ls-files --deleted ) 2> /dev/null; $( which git ) commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
 alias branch='git branch --show-current'
 alias gstall='git stash .'
 alias dfy='gitdf -y'
 
 # PostgreSQL aliases
-alias pgup='pg_ctl -D /opt/homebrew/var/postgresql@14 start > /dev/null'
-alias pgdown='pg_ctl -D /opt/homebrew/var/postgresql@14 stop > /dev/null'
+alias pgup='pg_ctl -D $( where postgres ) start > /dev/null'
+alias pgdown='pg_ctl -D $( where postgres ) stop > /dev/null'
 
 # Utility aliases
 
