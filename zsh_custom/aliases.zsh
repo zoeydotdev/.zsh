@@ -37,6 +37,7 @@ alias gwip='git add -A; git rm $( git ls-files --deleted ) 2> /dev/null; $( whic
 alias branch='git branch --show-current'
 alias gstall='git stash .'
 alias dfy='gitdf -y'
+alias dfoy='git difftool origin/$( git_current_branch ) -y'
 
 # PostgreSQL aliases
 alias pgup='pg_ctl -D $( where postgres ) start > /dev/null'
