@@ -3,6 +3,8 @@
 # Generate a summary of git commit activity between the provided oldest commit
 # and newest commit. If no newest commit, `HEAD` is used by default.
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 function build_line() {
     # summarize each commit
     tag="$1"

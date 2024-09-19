@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# rev-parse returns 0 if the current dir is in a git repo
+git rev-parse

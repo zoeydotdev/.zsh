@@ -3,6 +3,8 @@
 # Locally checkout a git branch or remote based on the provided ticket number
 # If no match is found, a new branch is created with the search term
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 stash_work() {
     [[ ! -z "$( all_changed_files )" ]] \
         && echo "STASHING WORK" \

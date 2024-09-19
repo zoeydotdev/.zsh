@@ -2,5 +2,7 @@
 
 # Get the string length of the last commit message
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 [[ ! -d .git ]] && echo "Not a git repository" && exit 1
 len $( commitmsg | head -n 1 )

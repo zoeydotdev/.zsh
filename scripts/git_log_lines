@@ -2,6 +2,8 @@
 
 # Generate git logs for a given range of lines in a given file
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 range="$1"
 [[ -z $range ]] \
     && echo "No line range supplied. Exiting" \

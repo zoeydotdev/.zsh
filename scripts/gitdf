@@ -2,4 +2,6 @@
 
 # Diff git changes against the default branch in a dedicated difftool window
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 git difftool $( default_branch ) "$@"

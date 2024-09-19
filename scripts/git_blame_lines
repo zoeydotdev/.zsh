@@ -2,6 +2,8 @@
 
 # Generate git blame statements for a range of lines in a file
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 range="$1"
 [[ -z $range ]] \
     && echo "No line range supplied. Exiting" \

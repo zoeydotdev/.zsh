@@ -2,7 +2,7 @@
 
 # Create a new git worktree for the repo in the parent folder
 
-[[ ! -d .git ]] && echo "Not a git repository" && exit 1
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
 
 TREE_NAME="$1"
 [[ -z "$TREE_NAME" ]] \

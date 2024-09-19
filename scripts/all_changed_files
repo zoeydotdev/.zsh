@@ -3,6 +3,8 @@
 # Create a list of git tracked file changes that can be used to
 # perform operations for all changed files, such as applying formatting.
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 changed_files=$(
     {
         git diff --name-only;

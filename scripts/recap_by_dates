@@ -8,6 +8,8 @@
 # If `--mine` is provided, only print my activity between those dates.
 # NOTE: `--mine` overrides `--email`, they cannot be used together.
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 for ARGUMENT in "$@"; do
     KEY=$( echo $ARGUMENT | cut -f1 -d= )
     VALUE=$( echo $ARGUMENT | cut -f2 -d= )

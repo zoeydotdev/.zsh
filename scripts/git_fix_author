@@ -4,6 +4,8 @@
 # in case of accounts being shared by multiple email addresses
 # for example, using the same GitHub for work as for personal projects
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 FROM_EMAIL="$1"
 [[ "$FROM_EMAIL" == "-h" ]] \
     && echo "Description: Edits all commit authorships from FROM_EMAIL to TO_EMAIL" \

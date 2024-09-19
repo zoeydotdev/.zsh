@@ -3,6 +3,8 @@
 # Delete all branches excluding the default branch unless the
 # `-all` flag is passed, in which case only the default branch remains
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 for ARGUMENT in "$@"; do
     case $ARGUMENT in
         -d) [[ -z $delete_flag ]] && delete_flag="-d" ;;

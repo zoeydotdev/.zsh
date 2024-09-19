@@ -2,4 +2,6 @@
 
 # Checkout a repo's default branch, and fetch and pull all recent updates
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 gitcd && git fetch -apq && git pull

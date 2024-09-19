@@ -2,6 +2,8 @@
 
 # Determine the repository's default branch
 
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
 branch=$( git branch -a | grep -e '->' | awk '{print $3}' | cut -d '/' -f 2 | awk '{print $NF}' )
 if [[ -z "$branch" ]]; then
     branch=$( git branch -a | grep -e '*' | awk '{print $2}' )
