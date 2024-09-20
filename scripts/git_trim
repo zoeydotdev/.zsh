@@ -9,7 +9,7 @@ for ARGUMENT in "$@"; do
     case $ARGUMENT in
         -d) [[ -z $delete_flag ]] && delete_flag="-d" ;;
         -D) [[ -z $delete_flag ]] && delete_flag="-D" ;;
-        *-all) curr_branch=$( default_branch )
+        *-all) curr_branch=$( default_branch )        ;;
 
         *)  ;;
     esac
