@@ -24,7 +24,7 @@ function build_line() {
             line="$line $subject"
         fi
         echo "$line $author"
-    elif [[ "$ticket" -eq "TRIVIAL" ]]; then
+    elif [[ "$ticket" == "TRIVIAL" ]]; then
         echo "$tag $url ${subject/$ticket} $author"
     else
         echo "$tag $url ${subject/$ticket } $author"
