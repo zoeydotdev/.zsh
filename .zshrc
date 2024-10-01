@@ -69,7 +69,23 @@ ZSH_CUSTOM=/opt/bin/zsh_custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew celery git golang httpie python vscode)
+plugins=(
+    brew
+    direnv
+    fzf
+    gcloud
+    git
+    golang
+    history
+    httpie
+    jira
+    mix
+    mix-fast
+    thefuck
+    web-search
+    z
+    zsh-interactive-cd
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +121,7 @@ ulimit -n 50000
 export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv"
 
 # Used to privatize ticketing system
-export TICKETING_URL=
+export JIRA_URL=
 
 # Used to customize where git repos are for each system
 export REPOS_ROOT=

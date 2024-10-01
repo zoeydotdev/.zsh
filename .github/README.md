@@ -7,11 +7,13 @@ Scripts I wrote to do things.
 1. **`asdf`**
 1. **`brew`**
 1. **`direnv`**
+1. **`fzf`**
+1. **`jq`**
 1. **`nvim`**
 1. **`oh-my-zsh`**
 1. **`python3`**
+1. **`thefuck`**
 1. **`zsh`**
-1. **`jq`**
 
 ## Usage
 

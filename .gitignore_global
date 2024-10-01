@@ -1,2 +1,11 @@
 *~
 .DS_Store
+
+# oh-my-zsh plugin conf files ignore list
+
+# omz:mix-fast
+.mix_tasks
+
+# omz:jira
+.jira_*
+.jira-*

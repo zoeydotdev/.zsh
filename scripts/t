@@ -16,7 +16,7 @@ for ARGUMENT in "$@"; do
 done
 
 for ticket in $tickets; do
-    URL="$TICKETING_URL$ticket"
+    URL="$JIRA_URL/browse/$ticket"
     echo "$URL"
     [[ $ONLY_ECHO -ne 1 ]] && open "$URL"
 done
