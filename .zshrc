@@ -112,9 +112,6 @@ eval "$( direnv hook zsh )"
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
 
-# Load asdf sofware version manager/installer software
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # Increase ulimit for running pytest from CLI
 ulimit -n 50000
 

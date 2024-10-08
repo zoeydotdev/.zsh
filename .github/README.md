@@ -4,16 +4,18 @@ Scripts I wrote to do things.
 
 ## Pre-reqs
 
+1. **`zsh`**
+1. **`git`**
+1. **`oh-my-zsh`**
 1. **`asdf`**
 1. **`brew`**
 1. **`direnv`**
 1. **`fzf`**
 1. **`jq`**
 1. **`nvim`**
-1. **`oh-my-zsh`**
 1. **`python3`**
 1. **`thefuck`**
-1. **`zsh`**
+1. **`ripgrep`**
 
 ## Usage
 
@@ -28,6 +30,7 @@ Scripts I wrote to do things.
     rm ~/.gitignore_global; ln -s /opt/bin/.gitignore_global ~/.gitignore_global;
     rm ~/.iex.exs; ln -s /opt/bin/.iex.exs ~/.iex.exs;
     rm ~/.tool-versions; ln -s /opt/bin/.tool-versions ~/.tool-versions;
+    rm ~/.wezterm.lua; ln -s /opt/bin/.wezterm.lua ~/.wezterm.lua;
     ```
 1. Configure any unset variables from `./.zshrc` in `~/.zshrc` to keep them private!
 
