@@ -23,7 +23,7 @@ Scripts I wrote to do things.
 1. Clone repository to `/opt/bin`.
 1. Add `source /opt/bin/.zshrc` to `~/.zshrc`.
 1. Replace home dir config files with symlinks to this repository:
-    ```
+    ```sh
     rm ~/.zprofile; ln -s /opt/bin/.zprofile ~/.zprofile;
     rm ~/.editorconfig; ln -s /opt/bin/.editorconfig ~/.editorconfig;
     rm ~/.gitconfig/; ln -s /opt/bin/.gitconfig ~/.gitconfig;
@@ -31,6 +31,10 @@ Scripts I wrote to do things.
     rm ~/.iex.exs; ln -s /opt/bin/.iex.exs ~/.iex.exs;
     rm ~/.tool-versions; ln -s /opt/bin/.tool-versions ~/.tool-versions;
     rm ~/.wezterm.lua; ln -s /opt/bin/.wezterm.lua ~/.wezterm.lua;
+    ```
+    * **Windows-only |** Powershell as Administrator
+    ```ps1
+    New-Item -ItemType SymbolicLink -Path "$Env:Home\.wezterm.lua" -Target "\\wsl.localhost\Debian\opt\bin\.wezterm.lua"
     ```
 1. Configure any unset variables from `./.zshrc` in `~/.zshrc` to keep them private!
 

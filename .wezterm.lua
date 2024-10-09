@@ -19,4 +19,14 @@ config.freetype_render_target = 'HorizontalLcd'
 -- Appearance: color scheme
 config.color_scheme = 'Ef-Cherie'
 
+--[[
+        Windows-only configuration
+]]
+
+config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
+
+--[[
+        Mac-only configuration
+]]
+
 return config
