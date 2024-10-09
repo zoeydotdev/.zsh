@@ -109,6 +109,9 @@ export VISUAL="$EDITOR"
 # Configure direnv
 eval "$( direnv hook zsh )"
 
+# Configure fzf
+source <(fzf --zsh)
+
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
 
