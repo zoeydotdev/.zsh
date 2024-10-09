@@ -19,14 +19,28 @@ config.freetype_render_target = 'HorizontalLcd'
 -- Appearance: color scheme
 config.color_scheme = 'Ef-Cherie'
 
+local arch = nil
+if jit and jit.os then
+    arch = jit.arch
+end
+
 --[[
         Windows-only configuration
 ]]
-
-config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
+if arch == 'x64' then
+    -- print('OS detected: Windows')
+    config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
+end
 
 --[[
         Mac-only configuration
 ]]
+if arch == 'arm64' then
+    -- print('OS detected: Darwin')
+end
+
+if arch == nil then
+    print('Unable to recognize OS')
+end
 
 return config
