@@ -19,7 +19,7 @@
     insteadOf = https://gitlab.com/
 
 [core]
-    excludesfile = /opt/bin/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [difftool "opendiff"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -44,4 +44,4 @@
     lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
     b = branch
 [commit]
-	gpgsign = true
+    gpgsign = true

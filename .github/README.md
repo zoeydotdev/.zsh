@@ -2,41 +2,41 @@
 
 Scripts I wrote to do things.
 
-## Pre-reqs
+# Pre-requisites
 
-1. **`zsh`**
-1. **`git`**
-1. **`oh-my-zsh`**
-1. **`asdf`**
-1. **`brew`**
-1. **`direnv`**
-1. **`fzf`**
-1. **`jq`**
-1. **`nvim`**
-1. **`python3`**
-1. **`thefuck`**
-1. **`ripgrep`**
+1. [WezTerm](https://wezfurlong.org/wezterm/index.html)
 
-## Usage
+## MacOS Installation
 
-1. Install prereqs
-1. Clone repository to `/opt/bin`.
-1. Add `source /opt/bin/.zshrc` to `~/.zshrc`.
-1. Replace home dir config files with symlinks to this repository:
+1. Execute in terminal
     ```sh
-    rm ~/.zprofile; ln -s /opt/bin/.zprofile ~/.zprofile;
-    rm ~/.editorconfig; ln -s /opt/bin/.editorconfig ~/.editorconfig;
-    rm ~/.gitconfig/; ln -s /opt/bin/.gitconfig ~/.gitconfig;
-    rm ~/.gitignore_global; ln -s /opt/bin/.gitignore_global ~/.gitignore_global;
-    rm ~/.iex.exs; ln -s /opt/bin/.iex.exs ~/.iex.exs;
-    rm ~/.tool-versions; ln -s /opt/bin/.tool-versions ~/.tool-versions;
-    rm ~/.wezterm.lua; ln -s /opt/bin/.wezterm.lua ~/.wezterm.lua;
+    git clone git@github.com:benjamindburke/.zsh /opt/bin;
+    source /opt/bin/install.sh;
     ```
-    * **Windows-only |** Powershell as Administrator
+1. Configure .gitconfig files in ~/repos and ~/repos-personal
+1. [Configure SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+1. [Configure GPG signing keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+1. Add SSH and GPG keys to [GitHub settings](https://github.com/settings/keys)
+1. Configure any unset variables in `~/.zshrc` to keep them private!
+
+## Windows WSL Installation
+
+1. Execute in **Powershell as Administrator**
     ```ps1
     New-Item -ItemType SymbolicLink -Path "$Env:Home\.wezterm.lua" -Target "\\wsl.localhost\Debian\opt\bin\.wezterm.lua"
     ```
-1. Configure any unset variables from `./.zshrc` in `~/.zshrc` to keep them private!
+1. Execute in WSL after opening WezTerm (by default, should open to the WSL home configured inside [./confs/wezterm.lua](../confs/.wezterm.lua))
+    ```sh
+    sudo apt-get install git;
+    sudo git clone git@github.com:benjamindburke/.zsh /opt/bin;
+    sudo chown -hR $USER /opt/bin;
+    source /opt/bin/win-install.sh;
+    ```
+1. Update .gitconfig files in ~/repos and ~/repos-personal
+1. [Create SSH public/private keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+2. [Create GPG signing keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+3. [Add SSH and GPG keys to GitHub settings](https://github.com/settings/keys)
+4. Configure any unset variables in `~/.zshrc` to keep them private!
 
 ## `scripts/`
 

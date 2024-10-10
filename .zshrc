@@ -89,6 +89,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Load asdf sofware version manager/installer software
+source $( brew --prefix asdf )/libexec/asdf.sh
+source "$HOME/.asdf/asdf.sh"
+
 # Configure GPG for signing and verifying GitHub/GitLab commits
 export GPG_TTY=$( tty )
 
@@ -109,8 +113,8 @@ export VISUAL="$EDITOR"
 # Configure direnv
 eval "$( direnv hook zsh )"
 
-# Configure fzf
-source <(fzf --zsh)
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
