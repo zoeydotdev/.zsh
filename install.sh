@@ -5,8 +5,8 @@
 # Step 0:
 #   obtain which computer script is running on
 
-APPLE=$(   echo $PATH | grep -i 'apple' )
-WINDOWS=$( echo $PATH | grep -i 'system32' )
+APPLE=$(   echo $PATH | grep -io 'apple' )
+WINDOWS=$( echo $PATH | grep -io 'system32' )
 function only_if_apple()   { [[ ! -z "${APPLE}" ]]   && eval "$@"; }
 function only_if_windows() { [[ ! -z "${WINDOWS}" ]] && eval "$@"; }
 
@@ -44,7 +44,7 @@ _source_str='# Load configuration from git\nsource /opt/bin/.zshrc\n'
     && echo ${_source_str} | cat - ~/.zshrc > ~/.zshrc \
     || echo ${_source_str} > ~/.zshrc
 
-for config in $( ls -ap /opt/bin/confs/ | egrep -v '(/|.wezterm.lua)' ); do
+for config in $( ls -ap /opt/bin/confs/ | egrep -v '(/|.wezterm.lua|.md)' ); do
     homedir_conf=~/${config}
     [[ -f ${homedir_conf} ]] && mv ${homedir_conf} ${homedir_conf}-$( date -u '+%s' )
     ln -s /opt/bin/confs/${config} ${homedir_conf}
@@ -87,7 +87,6 @@ brew install \
     neovim \
     postgresql@14 \
     pyenv \
-    python3 \
     ripgrep \
     rust \
     thefuck \
@@ -113,3 +112,16 @@ git clone git@github.com:benjamindburke/nvim-config.git ~/.config/nvim
 
 ln -s /opt/bin ${HOME}/repos-personal/zsh-config
 ln -s ${HOME}/.config/nvim ${HOME}/repos-personal/nvim-config
+
+# Step 10:
+#   Configure global python versions and build nvim debugpy venv
+
+PYTHON_VERSION=$( cat .python-version )
+pyenv install --skip-existing $PYTHON_VERSION
+pyenv global $PYTHON_VERSION
+
+cd ~/.config
+python3 -m venv venv/
+chmod +x venv/bin/activate
+. venv/bin/activate
+pip install -r requirements.txt

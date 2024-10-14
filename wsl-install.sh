@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-sudo \
-    apt-get update \
-    && apt-get upgrade \
-    && apt-get -y install \
-        build-essentials \
+sudo apt-get update \
+    && sudo apt-get upgrade \
+    && sudo apt-get -y install \
+        build-essential \
         curl \
         wget \
         zsh \

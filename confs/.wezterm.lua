@@ -27,20 +27,6 @@ end
 --[[
         Windows-only configuration
 ]]
-if arch == 'x64' then
-    -- print('OS detected: Windows')
-    config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
-end
-
---[[
-        Mac-only configuration
-]]
-if arch == 'arm64' then
-    -- print('OS detected: Darwin')
-end
-
-if arch == nil then
-    print('Unable to recognize OS')
-end
+config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
 
 return config
