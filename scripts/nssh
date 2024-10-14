@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# edit remote files over scp using NeoVim
+
+HOST="$1"
+[[ -z "$HOST" ]] && echo "no remote host supplied, exiting" && exit 1
+
+REMOTE_FILE=${2:-'/'} # if none provided start nvim at root dir /
+
+nvim scp://$HOST/$REMOTE_FILE

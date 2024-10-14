@@ -69,6 +69,15 @@ alias to='t -o'
 alias ':q'='exit'
 
 # x on console adds the execution bit to a file
-alias 'x'='chmod +x'
+alias x='chmod +x'
+
+# ensure 'where' exists because getting it wrong sometimes is annoying
+alias where='which'
+
+# add aliases for editing files over scp via nvim
+alias nvimssh='nssh'
+alias nish='nssh'
+alias nvssh='nssh'
+alias vimssh='nssh'
 
 source $ZSH_CUSTOM/functions.zsh
