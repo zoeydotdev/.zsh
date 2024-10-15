@@ -19,14 +19,18 @@ config.freetype_render_target = 'HorizontalLcd'
 -- Appearance: color scheme
 config.color_scheme = 'Ef-Cherie'
 
-local arch = nil
-if jit and jit.os then
-    arch = jit.arch
+local windows = false
+local path = os.getenv("PATH")
+if string.match(string.lower(path), "system32") ~= nil then
+    windows = true
 end
 
 --[[
-        Windows-only configuration
+    Windows-only configuration
 ]]
-config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
+
+if windows then
+    config.default_domain = 'WSL:Debian' -- Always open WezTerm to the WSL Debian installation
+end
 
 return config
