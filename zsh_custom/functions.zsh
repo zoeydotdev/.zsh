@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 function recap()           { recap_by_range             "$@"; }
 function recap_day()       { recap_by_dates  --days=1   "$@"; }
 function recap_day_all()   { recap_all       --days=1   "$@"; }

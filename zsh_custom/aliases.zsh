@@ -80,4 +80,14 @@ alias nish='nssh'
 alias nvssh='nssh'
 alias vimssh='nssh'
 
-source $ZSH_CUSTOM/functions.zsh
+# add aliases for wezterm on WSL and apple
+if [[ $PATH =~ /System32/ ]]; then
+    alias wezterm="/mnt/s/Software/WezTerm/wezterm.exe"
+    alias wezterm-gui="/mnt/s/Software/WezTerm/wezterm-gui.exe"
+else
+    alias wezterm="/Applications/WezTerm.app/Contents/MacOS/wezterm"
+fi
+
+# ensure thefuck aliases are configured
+eval $( thefuck --alias )
+eval $( thefuck --alias FUCK )

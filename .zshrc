@@ -62,22 +62,20 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-ZSH_CUSTOM=/opt/bin/zsh_custom
+export ZSH_CUSTOM=/opt/bin/zsh_custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
     brew
-    direnv
     fzf
-    gcloud
     git
     golang
     history
-    httpie
     jira
     mix
     mix-fast
@@ -91,7 +89,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Load asdf sofware version manager/installer software
 source $( brew --prefix asdf )/libexec/asdf.sh
-source "$HOME/.asdf/asdf.sh"
 
 # Configure GPG for signing and verifying GitHub/GitLab commits
 export GPG_TTY=$( tty )
@@ -113,20 +110,16 @@ export VISUAL="$EDITOR"
 # Configure direnv
 eval "$( direnv hook zsh )"
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# Bash completion
-autoload -U +X bashcompinit && bashcompinit
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(`which brew` shellenv)"
 
 # Increase ulimit for running pytest from CLI
 ulimit -n 50000
 
 export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv"
-if [[ $PATH =~ /System32/ ]]; then
-    alias wezterm="/mnt/s/Software/WezTerm/wezterm.exe"
-    alias wezterm-gui="/mnt/s/Software/WezTerm/wezterm-gui.exe"
-fi
+
+export CLICOLOR=1
+export TERM=xterm-256color
 
 # Used to privatize ticketing system
 export JIRA_URL=
@@ -136,3 +129,11 @@ export REPOS_ROOT=
 
 # Used to generate Nvim colorschemes based on words or phrases
 export OPENAI_API_KEY=
+
+##################################
+# DO NOT ADD ANYTHING AFTER THIS LINE
+##################################
+
+source $ZSH_CUSTOM/functions.zsh
+source $ZSH_CUSTOM/aliases.zsh
+source /opt/bin/zsh_custom/completions.zsh

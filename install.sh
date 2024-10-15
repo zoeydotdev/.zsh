@@ -53,8 +53,7 @@ done
 # Apple-only: symlink this repo's WezTerm conf file to $HOME and create alias
 # Windows-only: this file is already symlinked via Powershell from outside WSL
 only_if_apple \
-    ln -s /opt/bin/confs/.wezterm.lua ~/.wezterm.lua \
-    && echo 'alias wezterm="/Applications/WezTerm.app/Contents/MacOS/wezterm"\n' > ~/.zshrc
+    ln -s /opt/bin/confs/.wezterm.lua ~/.wezterm.lua
 
 # Step 5:
 #   create git dirs and location-specific gitconfig files
