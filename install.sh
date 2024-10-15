@@ -83,7 +83,7 @@ brew install \
     go \
     jq \
     lua \
-    node \
+    nvm \
     neovim \
     postgresql@14 \
     pyenv \
@@ -125,3 +125,8 @@ python3 -m venv venv/
 chmod +x venv/bin/activate
 . venv/bin/activate
 pip install -r requirements.txt
+
+# Step 11:
+#   install global version of node
+
+nvm install $( cat /opt/bin/confs/.nvmrc )
