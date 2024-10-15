@@ -21,10 +21,10 @@ bash -c "$( curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/i
 # Step 2:
 #   ensure zsh is the default shell
 
-[[ -z $( echo ${SHELL} | grep 'zsh' ) ]] && sudo chsh -s $( which zsh )
-
 # Apple-only: install zsh from brew
 only_if_apple brew install coreutils openssl@3 tree zsh
+
+[[ -z $( echo ${SHELL} | grep 'zsh' ) ]] && sudo chsh -s $( which zsh )
 
 # Step 3:
 #   install oh-my-zsh

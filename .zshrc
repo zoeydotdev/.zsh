@@ -123,6 +123,10 @@ autoload -U +X bashcompinit && bashcompinit
 ulimit -n 50000
 
 export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv"
+if [[ $PATH =~ /System32/ ]]; then
+    alias wezterm="/mnt/s/Software/WezTerm/wezterm.exe"
+    alias wezterm-gui="/mnt/s/Software/WezTerm/wezterm-gui.exe"
+fi
 
 # Used to privatize ticketing system
 export JIRA_URL=
