@@ -43,7 +43,14 @@ alias dfoy='git difftool origin/$( git_current_branch ) -y'
 alias pgup='pg_ctl -D $( where postgres ) start > /dev/null'
 alias pgdown='pg_ctl -D $( where postgres ) stop > /dev/null'
 
+
 # Utility aliases
+
+alias cdp='cd -P'
+alias la='ls -a'
+alias ll='ls -al'
+alias l='ls'
+
 
 # Docker aliases
 

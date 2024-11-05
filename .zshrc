@@ -130,10 +130,22 @@ export REPOS_ROOT=
 # Used to generate Nvim colorschemes based on words or phrases
 export OPENAI_API_KEY=
 
+# pyenv configuration
+export PYENV_ROOT="$HOME/.pyenv"
+pyenv_current=$( basename `pyenv prefix` )
+if [[ $pyenv_current =~ ^3(\.[0-9]+)+$ ]] then
+    if [[ -d $PYENV_ROOT/versions/$pyenv_current/bin ]] then
+        export PATH="$PYENV_ROOT/versions/$pyenv_current/bin:$PATH"
+    fi
+fi
+
+# https://github.com/pyenv/pyenv/issues/1446
+eval "$(pyenv init -)"
+
 ##################################
 # DO NOT ADD ANYTHING AFTER THIS LINE
 ##################################
 
 source $ZSH_CUSTOM/functions.zsh
 source $ZSH_CUSTOM/aliases.zsh
-source /opt/bin/zsh_custom/completions.zsh
+source $ZSH_CUSTOM/completions.zsh

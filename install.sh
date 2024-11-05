@@ -88,6 +88,7 @@ brew install \
     pyenv \
     ripgrep \
     rust \
+    spicetify-cli \
     thefuck \
     tmux \
     tree-sitter \
@@ -115,17 +116,33 @@ ln -s ${HOME}/.config/nvim ${HOME}/repos-personal/nvim-config
 # Step 10:
 #   Configure global python versions and build nvim debugpy venv
 
-PYTHON_VERSION=$( cat .python-version )
+PYTHON_VERSION=$( cat ~/.config/nvim/.python-version )
 pyenv install --skip-existing $PYTHON_VERSION
 pyenv global $PYTHON_VERSION
 
-cd ~/.config
-python3 -m venv venv/
+cd ~/.config/nvim
+pyenv local $PYTHON_VERSION
+$( which python ) -m venv venv/
 chmod +x venv/bin/activate
 . venv/bin/activate
+
 pip install -r requirements.txt
 
 # Step 11:
 #   install global version of node
 
-nvm install $( cat /opt/bin/confs/.nvmrc )
+nvm install $( cat ~/.nvmrc )
+
+# Step 12:
+#    install global npm dependencies
+
+npm install -g neovim
+
+# Step 13:
+#   configure spicetify-cli
+
+mkdir -p ~/.config/spicetify/
+only_if_apple \
+    ln -s /opt/bin/mac-conf/config-xpui.ini ~/.config/spicetify/config-xpui.ini
+
+spicetify backup apply enable-devtools
