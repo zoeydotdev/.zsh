@@ -116,7 +116,7 @@ eval "$(`which brew` shellenv)"
 # Increase ulimit for running pytest from CLI
 ulimit -n 50000
 
-export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv"
+export PATH="$PATH:/opt/bin/scripts:/opt/bin/priv:$HOME/bin"
 
 export CLICOLOR=1
 export TERM=xterm-256color
