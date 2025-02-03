@@ -113,6 +113,9 @@ eval "$( direnv hook zsh )"
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(`which brew` shellenv)"
 
+# Configure golang to always use Go modules
+export GO111MODULE=on
+
 # Increase ulimit for running pytest from CLI
 ulimit -n 50000
 
