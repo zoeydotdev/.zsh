@@ -4,4 +4,4 @@
 
 must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
 
-gitcd && git fetch -apq && git pull
+gitcd && git fetch -apq && git pull && git fetch --tags

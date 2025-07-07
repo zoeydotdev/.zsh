@@ -18,11 +18,13 @@ Usage: wrk.sh --service=<SERVICE> --siteId=<SITE_ID> --env=<ENV> [<options>]
    or: wrk.sh -s<SERVICE> -i<SITE_ID> -e<ENV> [<options>]
 
     [-h|--help]                     Print this help message and exit.
+    [-f|--file=]<FILE>              REQUIRED. Lua script file.
     [-s|--service=]<SERVICE>        REQUIRED. Service being tested.
     [-i|--siteId=]<SERVICE>         REQUIRED. Site ID being tested.
     [-e|--env=]<ENV>                REQUIRED. Test environment of the service.
     [-d|--duration=]<DURATION>      Defaults to ${DEFAULT_D}. Duration of the test, e.g: 2s, 2m, 2h.
     [-v|--version=]<VERSION>        Defaults to ${DEFAULT_V}. API version identifier, e.g.: v0, v1, v2.
+                                    Example:   -v0    --version=v0
     [-l|--logfile=]<LOGFILE>        Pipes a timestamp and test results to file if provided.
     [-t|--threads=]<N_THREADS>      Defaults to T = 2 * (total CPU core count) threads.
                                     Total number of CPU threads used to connect with
@@ -47,6 +49,9 @@ for ARGUMENT in "$@"; do
         -s*)        SERVICE=${KEY/-s/}         ;;
         --service)  SERVICE=${VALUE}           ;;
 
+        -f*)        FILE=${KEY/-f/}            ;;
+        --file)     FILE=${VALUE}              ;;
+
         -i*)        SITE_ID=${KEY/-i/}         ;;
         --siteId)   SITE_ID=${VALUE}           ;;
 
@@ -56,7 +61,7 @@ for ARGUMENT in "$@"; do
         -d*)        DURATION=${KEY/-d/}        ;;
         --duration) DURATION=${VALUE}          ;;
 
-        -v)         VERSION=${KEY/-v/}         ;;
+        -v*)        VERSION=v${KEY/-v/}        ;;
         --version)  VERSION=${VERSION}         ;;
 
         -l*)        LOGFILE=${KEY/-l/}         ;;
@@ -74,7 +79,7 @@ for ARGUMENT in "$@"; do
     esac
 done
 
-[[ -z $SERVICE || -z $SITE_ID || -z $ENV ]] && get_help 2;
+[[ -z $SERVICE || -z $SITE_ID || -z $ENV || -z $FILE ]] && get_help 2;
 
 [[ -z "$NUM_THREADS" ]]      && NUM_THREADS=$((($(sysctl -n hw.ncpu) * 2)))
 [[ -z "$NUM_CONNECTIONS" ]]  && NUM_CONNECTIONS=$(((${NUM_THREADS} * 2) + 1))
@@ -97,11 +102,9 @@ AUTH_TOKEN=$( get_auth_token $ENDPOINT $SITE_ID )
 ##  Test performance
 ################################################
 
-wrk_script=$( ls *wrk.lua | head -n 1 )
-
 if [[ -z "$LOGFILE" ]]; then
     read -r -d '' CMD << EOF
-    wrk -s ${wrk_script} -t${NUM_THREADS} -c${NUM_CONNECTIONS} --latency -d${DURATION} \
+    wrk -s ${FILE} -t${NUM_THREADS} -c${NUM_CONNECTIONS} --latency -d${DURATION} \
         -H 'Authorization: Bearer ${AUTH_TOKEN}' \
         ${ENDPOINT}/api/${SERVICE}/${VERSION}/${SITE_ID}
 EOF
@@ -112,7 +115,7 @@ else
     && echo "## Test ran on ${TODAY}" >> ${LOGFILE} \
     && echo >> ${LOGFILE} \
     && echo '\`\`\`' >> ${LOGFILE} \
-    && wrk -s ${wrk_script} -t${NUM_THREADS} -c${NUM_CONNECTIONS} --latency -d${DURATION} \
+    && wrk -s ${FILE} -t${NUM_THREADS} -c${NUM_CONNECTIONS} --latency -d${DURATION} \
         -H 'Authorization: Bearer ${AUTH_TOKEN}' \
         ${ENDPOINT}/api/${SERVICE}/${VERSION}/${SITE_ID} >> ${LOGFILE} \
     && echo '\`\`\`' >> ${LOGFILE};
