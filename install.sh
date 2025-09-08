@@ -105,7 +105,7 @@ asdf install
 #   Git clone neovim config
 
 [[ ! -d ~/.config ]] && mkdir ~/.config
-git clone git@github.com:benjamindburke/nvim-config.git ~/.config/nvim
+git clone git@github.com:zoeydotdev/nvim-config.git ~/.config/nvim
 
 # Step 9:
 #   Symlink personal directories to repo roots

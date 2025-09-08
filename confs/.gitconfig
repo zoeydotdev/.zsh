@@ -1,5 +1,5 @@
 [user]
-    name = Ben Burke
+    name = Zoey Burke
 
 [includeIf "gitdir:~/repos-personal/"]
     path = ~/repos-personal/.gitconfig

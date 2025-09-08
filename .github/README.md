@@ -1,4 +1,4 @@
-# benjamindburke/.zsh
+# zoeydotdev/.zsh
 
 Scripts I wrote to do things.
 
@@ -10,7 +10,7 @@ Scripts I wrote to do things.
 
 1. Execute in terminal
     ```sh
-    git clone git@github.com:benjamindburke/.zsh /opt/bin;
+    git clone git@github.com:zoeydotdev/.zsh /opt/bin;
     source /opt/bin/install.sh;
     ```
 1. Configure .gitconfig files in ~/repos and ~/repos-personal
@@ -28,7 +28,7 @@ Scripts I wrote to do things.
 1. Execute in WSL after opening WezTerm (by default, should open to the WSL home configured inside [./confs/wezterm.lua](../confs/.wezterm.lua))
     ```sh
     sudo apt-get install git;
-    sudo git clone git@github.com:benjamindburke/.zsh /opt/bin;
+    sudo git clone git@github.com:zoeydotdev/.zsh /opt/bin;
     sudo chown -hR $USER /opt/bin;
     source /opt/bin/win-install.sh;
     ```
