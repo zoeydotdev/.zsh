@@ -23,7 +23,7 @@ TO_EMAIL="$2"
 
 NAME=$( git config --global user.name )
 
-git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "'"${FROM_EMAIL}"'" ]; then
+FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "'"${FROM_EMAIL}"'" ]; then
     export GIT_AUTHOR_EMAIL="'"${TO_EMAIL}"'";
     export GIT_AUTHOR_NAME="'"${NAME}"'";
     export GIT_COMMITTER_EMAIL="'"${TO_EMAIL}"'";
