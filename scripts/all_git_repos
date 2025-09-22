@@ -5,6 +5,15 @@
 
 [[ -z "$REPOS_ROOT" ]] && REPOS_ROOT="$HOME"
 
-for repo in $( ls -d $REPOS_ROOT/{github,gitlab}/*/.git ); do
+repos=$(
+    {
+        ls -d $REPOS_ROOT/*/.git;
+        ls -d $REPOS_ROOT-personal/*/.git;
+        ls -d $REPOS_ROOT/github/*/.git;
+        ls -d $REPOS_ROOT/gitlab/*/.git;
+    } 2>/dev/null | sort;
+)
+
+for repo in $repos; do
     dirname $repo
 done
