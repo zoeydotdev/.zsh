@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # empty the stash
-$ git stash clear
+git stash clear
 
 # objects can also be reached through the reflog.
 # while branches record the history of some project, reflogs record the history of these branches.
@@ -17,11 +17,11 @@ $ git stash clear
 # so we again have to tell it not to do so: --expire-unreachable=now.
 # use the reflog to recover from destructive operations
 # use --expire=now instead, which zaps the reflogs completely.
-$ git reflog expire --expire-unreachable=now --all
+git reflog expire --expire-unreachable=now --all
 
 # git-fsck - verifies the connectivity and validity of the objects in the database
 # '--unreachable' print out objects that exist but that aren’t reachable from any of the reference nodes.
-$ git fsck --unreachable
+git fsck --unreachable
 
 # removes unreachable objects (commits, trees, blobs (files)).
 # an object is unreachable if it isn't part of the history of some branch.
@@ -29,4 +29,4 @@ $ git fsck --unreachable
 
 # unreachable objects that are younger than two weeks are not removed
 # so we use --prune=now which means "remove unreachable objects that were created before now"
-$ git gc --prune=now
+git gc --prune=now
