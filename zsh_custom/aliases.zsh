@@ -40,8 +40,7 @@ alias dfy='gitdf -y'
 alias dfoy='git difftool origin/$( git_current_branch ) -y'
 
 # PostgreSQL aliases
-alias pgup='pg_ctl -D $( where postgres ) start > /dev/null'
-alias pgdown='pg_ctl -D $( where postgres ) stop > /dev/null'
+alias pg14='$(brew --prefix postgresql@14)/bin/postgres -D $(brew --prefix)/var/postgresql@14 &> /dev/null &'
 
 
 # Utility aliases
