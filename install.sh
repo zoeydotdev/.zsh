@@ -37,8 +37,6 @@ bash -c "$( curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/to
 # Step 4:
 #   configure system config files in homedir
 
-echo -e "\\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> ~/.bash_profile
-
 _source_str='# Load configuration from git\nsource /opt/bin/.zshrc\n'
 [[ -f ~/.zshrc ]] \
     && echo ${_source_str} | cat - ~/.zshrc > ~/.zshrc \
@@ -74,7 +72,6 @@ echo "finished creating git dirs"
 #   install system utilities from preferred package managers
 
 brew install \
-    asdf \
     delve \
     direnv \
     flyctl \
@@ -82,6 +79,7 @@ brew install \
     go \
     jq \
     lua \
+    mise \
     nvm \
     neovim \
     postgresql@18 \
@@ -97,9 +95,9 @@ brew install \
 ;
 
 # Step 7:
-#   install asdf-managed global software versions
+#   install mise-managed global software versions
 
-asdf install
+mise install
 
 # Step 8:
 #   Git clone neovim config

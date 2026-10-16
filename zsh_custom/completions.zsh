@@ -1,14 +1,6 @@
-# append ASDF completions to fpath
-fpath=(
-    ${ASDF_DIR}/completions
-    ${HOMEBREW_PREFIX}/completions
-    $fpath
-)
-
 # Configure Kubernetes if installed
 [[ -f $( which kubectl ) ]] \
     && source <(kubectl completion zsh)
-
 
 # The next line enables shell command completion for gcloud.
 [[ -f "$GCLOUD_INSTALL_PATH/completion.zsh.inc" ]] \
