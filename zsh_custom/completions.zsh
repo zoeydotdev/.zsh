@@ -9,9 +9,6 @@ fpath=(
 [[ -f $( which kubectl ) ]] \
     && source <(kubectl completion zsh)
 
-# Configure Terraform if installed
-[[ -f $( brew --prefix terraform )/bin/terraform ]] \
-    && complete -o nospace -C $( brew --prefix terraform )/bin/terraform terraform
 
 # The next line enables shell command completion for gcloud.
 [[ -f "$GCLOUD_INSTALL_PATH/completion.zsh.inc" ]] \

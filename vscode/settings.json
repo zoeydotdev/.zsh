@@ -1,0 +1,34 @@
+{
+    "chat.titleBar.signIn.enabled": false,
+    "chat.viewSessions.enabled": false,
+    "chat.titleBar.openInAgentsWindow.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "GoMono Nerd Font Mono",
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "window.openFoldersInNewWindow": "on",
+    "workbench.startupEditor": "none",
+    "workbench.externalBrowser": "firefox",
+    "workbench.tree.indent": 24,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.colorTheme": "Dracula Theme Soft",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.initialHint": false,
+    "files.associations": {
+        "*.exs": "elixir"
+    },
+    "[elixir]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true
+    },
+    "RainbowBrackets.depreciation-notice": false,
+    "indentRainbow.colors": [
+        "rgba(255,96,33,0.09)",
+        "rgba(81,255,33,0.09)",
+        "rgba(207,33,255,0.09)",
+        "rgba(33,192,255,0.09)"
+    ]
+}

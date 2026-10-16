@@ -84,7 +84,7 @@ brew install \
     lua \
     nvm \
     neovim \
-    postgresql@14 \
+    postgresql@18 \
     pyenv \
     ripgrep \
     rust \
@@ -146,3 +146,13 @@ only_if_apple \
     ln -s /opt/bin/mac-conf/config-xpui.ini ~/.config/spicetify/config-xpui.ini
 
 spicetify backup apply enable-devtools
+
+# Step 14:
+#   configure VSCode's settings.json
+
+# Apple-only: create a link in the VSCode 'Application' directory
+# Windows-only: create a link in the VSCode installation drive (can vary)
+only_if_apple \
+    ln -s /opt/bin/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+# only_if_windows \
+#     ln -s

@@ -87,9 +87,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Load asdf sofware version manager/installer software
-source $( brew --prefix asdf )/libexec/asdf.sh
-
 # Configure GPG for signing and verifying GitHub/GitLab commits
 export GPG_TTY=$( tty )
 
