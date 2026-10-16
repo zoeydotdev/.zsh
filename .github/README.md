@@ -23,7 +23,8 @@ Scripts I wrote to do things.
 
 1. Execute in **Powershell as Administrator**
     ```ps1
-    New-Item -ItemType SymbolicLink -Path "$Env:Home\.wezterm.lua" -Target "\\wsl.localhost\Debian\opt\bin\confs\.wezterm.lua"
+    New-Item -ItemType SymbolicLink -Path "$Env:Home\.wezterm.lua" -Target "\\wsl.localhost\Debian\opt\bin\confs\.wezterm.lua";
+    New-Item -ItemType SymbolicLink -Path "$Env:AppData\Code\User\settings.json" -Target "\\wsl.localhost\Debian\opt\bin\vscode\settings_win.json";
     ```
 1. Execute in WSL after opening WezTerm (by default, should open to the WSL home configured inside [./confs/wezterm.lua](../confs/.wezterm.lua))
     ```sh

@@ -151,8 +151,6 @@ spicetify backup apply enable-devtools
 #   configure VSCode's settings.json
 
 # Apple-only: create a link in the VSCode 'Application' directory
-# Windows-only: create a link in the VSCode installation drive (can vary)
+# Windows-only: this file is already symlinked via Powershell from outside WSL
 only_if_apple \
     ln -s /opt/bin/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-# only_if_windows \
-#     ln -s
