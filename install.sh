@@ -36,11 +36,10 @@ bash -c "$( curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/to
 
 # Step 4:
 #   configure system config files in homedir
-
-_source_str='# Load configuration from git\nsource /opt/bin/.zshrc\n'
-[[ -f ~/.zshrc ]] \
-    && echo ${_source_str} | cat - ~/.zshrc > ~/.zshrc \
-    || echo ${_source_str} > ~/.zshrc
+[[ -f ~/.zshrc ]] || touch ~/.zshrc
+only_if_apple cat /opt/bin/mac-conf/.zshrc >> ~/.zshrc
+only_if_windows cat /opt/bin/win-conf/.zshrc >> ~/.zshrc
+chmod 755 ~/.zshrc
 
 for config in $( ls -ap /opt/bin/confs/ | egrep -v '(/|.wezterm.lua|.md)' ); do
     homedir_conf=~/${config}
@@ -151,4 +150,4 @@ spicetify backup apply enable-devtools
 # Apple-only: create a link in the VSCode 'Application' directory
 # Windows-only: this file is already symlinked via Powershell from outside WSL
 only_if_apple \
-    ln -s /opt/bin/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    ln -s /opt/bin/mac-conf/settings.json ~/Library/Application\ Support/Code/User/settings.json

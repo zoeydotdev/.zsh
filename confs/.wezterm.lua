@@ -6,7 +6,7 @@ if wezterm.config_builder then
 end
 
 --[[
-        Apply user configurations
+    Apply user configurations
 ]]
 
 -- Appearance: fonts
