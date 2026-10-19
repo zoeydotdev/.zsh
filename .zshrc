@@ -72,14 +72,12 @@ export ZSH_CUSTOM=/opt/bin/zsh_custom
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
     brew
-    fzf
     git
     golang
     history
     jira
     mix
     mix-fast
-    thefuck
     web-search
     z
     zsh-interactive-cd
