@@ -65,26 +65,26 @@
   "window.zoomLevel": 1,
   "workbench.colorCustomizations": {
     "[Dracula Theme Soft]": {
-      "terminal.background": "#190a0f",
-      "terminal.foreground": "#d3cfcf",
-      "terminal.ansiBlack": "#000000",
-      "terminal.ansiRed": "#ff0000",
-      "terminal.ansiGreen": "#00ff00",
-      "terminal.ansiYellow": "#ffff00",
-      "terminal.ansiBlue": "#0000ff",
-      "terminal.ansiMagenta": "#ff00ff",
-      "terminal.ansiCyan": "#00ffff",
-      "terminal.ansiWhite": "#ffffff",
       // Copied from WezTerm color theme Ef-Cherie:
       // https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-cherie-theme.el
-      "terminal.ansiBrightBlack": "#190a0f",
-      "terminal.ansiBrightRed": "#ff656f",
-      "terminal.ansiBrightGreen": "#60b444",
-      "terminal.ansiBrightYellow": "#e5b76f",
+      "terminal.background": "#190a0f",
+      "terminal.foreground": "#d3cfcf",
+      "terminal.ansiBlack": "#291f26",
+      "terminal.ansiRed": "#ff7359",
+      "terminal.ansiGreen": "#60b444",
+      "terminal.ansiYellow": "#e5b76f",
+      "terminal.ansiBlue": "#8fa5f6",
+      "terminal.ansiMagenta": "#ef80bf",
+      "terminal.ansiCyan": "#8fbaef",
+      "terminal.ansiWhite": "#eeeeee",
+      "terminal.ansiBrightBlack": "#594a4f",
+      "terminal.ansiBrightRed": "#ff78aa",
+      "terminal.ansiBrightGreen": "#60bf88",
+      "terminal.ansiBrightYellow": "#f59280",
       "terminal.ansiBrightBlue": "#7fa5ff",
-      "terminal.ansiBrightMagenta": "#ef80bf",
-      "terminal.ansiBrightCyan": "#9ac0e4",
-      "terminal.ansiBrightWhite": "#d3cfcf"
+      "terminal.ansiBrightMagenta": "#df7fff",
+      "terminal.ansiBrightCyan": "#8fcfdf",
+      "terminal.ansiBrightWhite": "#808898"
     }
   },
   "workbench.colorTheme": "Dracula Theme Soft",
