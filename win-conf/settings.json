@@ -50,45 +50,61 @@
     "wsl.localhost"
   ],
   "security.workspace.trust.untrustedFiles": "open",
+  "terminal.external.windowsExec": "C:\\Program Files\\WezTerm\\wezterm-gui.exe",
   "terminal.integrated.defaultProfile.windows": "Debian (WSL)",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.initialHint": false,
   "terminal.integrated.shell.windows": "C:\\Program Files\\WezTerm\\wezterm-gui.exe",
-  "terminal.external.windowsExec": "C:\\Program Files\\WezTerm\\wezterm-gui.exe",
+  "terminal.integrated.tabs.defaultColor": "terminal.ansiMagenta",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.openFoldersInNewWindow": "on",
   "window.zoomLevel": 1,
+  "workbench.colorCustomizations": {
+    "[Dracula Theme Soft]": {
+      "terminal.background": "#190a0f",
+      "terminal.foreground": "#d3cfcf",
+      "terminal.ansiBlack": "#000000",
+      "terminal.ansiRed": "#ff0000",
+      "terminal.ansiGreen": "#00ff00",
+      "terminal.ansiYellow": "#ffff00",
+      "terminal.ansiBlue": "#0000ff",
+      "terminal.ansiMagenta": "#ff00ff",
+      "terminal.ansiCyan": "#00ffff",
+      "terminal.ansiWhite": "#ffffff",
+      // Copied from WezTerm color theme Ef-Cherie:
+      // https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-cherie-theme.el
+      "terminal.ansiBrightBlack": "#190a0f",
+      "terminal.ansiBrightRed": "#ff656f",
+      "terminal.ansiBrightGreen": "#60b444",
+      "terminal.ansiBrightYellow": "#e5b76f",
+      "terminal.ansiBrightBlue": "#7fa5ff",
+      "terminal.ansiBrightMagenta": "#ef80bf",
+      "terminal.ansiBrightCyan": "#9ac0e4",
+      "terminal.ansiBrightWhite": "#d3cfcf"
+    }
+  },
   "workbench.colorTheme": "Dracula Theme Soft",
-  "workbench.editor.closeOnFileDelete": true,
-  "workbench.externalBrowser": "firefox",
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.externalBrowser": "firefox",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.tree.indent": 24,
   "files.associations": {
     "*.eex": "shellscript"
   },
-  "[elixir]": {
-    "editor.defaultFormatter": "JakeBecker.elixir-ls"
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[csv]": {
     "editor.inlayHints.maximumLength": 0
@@ -98,5 +114,6 @@
     "rgba(81,255,33,0.09)",
     "rgba(207,33,255,0.09)",
     "rgba(33,192,255,0.09)"
-  ]
+  ],
+  "RainbowBrackets.depreciation-notice": false
 }
