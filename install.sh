@@ -86,7 +86,6 @@ brew install \
     ripgrep \
     rust \
     spicetify-cli \
-    thefuck \
     tmux \
     tree-sitter \
     wrk \

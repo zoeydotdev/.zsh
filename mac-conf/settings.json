@@ -78,10 +78,10 @@
     "*.exs": "elixir"
   },
   "indentRainbow.colors": [
-    "rgba(255,96,33,0.09)",
-    "rgba(81,255,33,0.09)",
-    "rgba(207,33,255,0.09)",
-    "rgba(33,192,255,0.09)"
+    "rgba(255,115,89,0.16)",
+    "rgba(96,180,68,0.16)",
+    "rgba(239,128,191,0.16)",
+    "rgba(143,207,223,0.16)"
   ],
   "RainbowBrackets.depreciation-notice": false
 }

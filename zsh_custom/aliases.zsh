@@ -93,7 +93,3 @@ if [[ $PATH =~ /System32/ ]]; then
 else
     alias wezterm="/Applications/WezTerm.app/Contents/MacOS/wezterm"
 fi
-
-# ensure thefuck aliases are configured
-eval $( thefuck --alias )
-eval $( thefuck --alias FUCK )
