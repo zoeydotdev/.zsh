@@ -74,7 +74,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.tree.indent": 24,
+  "workbench.tree.indent": 12,
   "files.associations": {
     "*.exs": "elixir"
   },
