@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# Returns a list of test files matching specific grep patterns
+# which have been staged using git.
+
+must_be_repo; rc=$?; [[ $rc -ne 0 ]] && exit $rc;
+
+git --no-pager diff --name-only --staged | grep -o '.*_test[^\.]*\..*'
